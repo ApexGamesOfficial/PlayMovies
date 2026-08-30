@@ -131,16 +131,34 @@ async function loadProfile() {
 
 
         /*
-            For now every account is Free.
-
-            Later this will come from the
-            real PlayMovies subscription
-            database.
+            
         */
 
-        currentPlan.textContent =
-            "Free";
+        const { data: subscription, error: subscriptionError } =
+    await supabaseClient
+        .from("subscriptions")
+        .select("plan, status")
+        .eq("user_id", user.id)
+        .single();
 
+if (subscriptionError) {
+    console.error(
+        "Could not load subscription:",
+        subscriptionError
+    );
+
+    currentPlan.textContent = "Free";
+} else {
+    const planNames = {
+        free: "Free",
+        essential: "Essential",
+        plus: "PlayMovies+",
+        ultimate: "Ultimate"
+    };
+
+    currentPlan.textContent =
+        planNames[subscription.plan] || "Free";
+}
     }
 
     catch (error) {
