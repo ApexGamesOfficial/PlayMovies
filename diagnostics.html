@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayMovies Diagnostics</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: #050708;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 24px;
+        }
+
+        .panel {
+            width: min(760px, 100%);
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            background: rgba(255,255,255,0.035);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 38px;
+        }
+
+        .sub {
+            color: #8f999f;
+            margin-bottom: 28px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #9aa4aa;
+        }
+
+        .value {
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .good {
+            color: #27e5d4;
+        }
+
+        .bad {
+            color: #ff8b8b;
+        }
+
+        button {
+            margin-top: 26px;
+            width: 100%;
+            min-height: 52px;
+            border: none;
+            border-radius: 9px;
+            background: #27e5d4;
+            color: #03100f;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="panel">
+
+        <h1>PlayMovies Diagnostics</h1>
+
+        <p class="sub">
+            Checking offline and Service Worker status.
+        </p>
+
+        <div class="row">
+            <span class="label">Browser Online</span>
+            <span class="value" id="onlineStatus">Checking...</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Service Workers Supported</span>
+            <span class="value" id="supportStatus">Checking...</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Registration Found</span>
+            <span class="value" id="registrationStatus">Checking...</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Worker State</span>
+            <span class="value" id="workerState">Checking...</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Page Controlled</span>
+            <span class="value" id="controllerStatus">Checking...</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Scope</span>
+            <span class="value" id="scopeStatus">Checking...</span>
+        </div>
+
+        <button id="refreshButton">
+            Run Diagnostics Again
+        </button>
+
+    </main>
+
+    <script>
+
+        function setStatus(id, text, good) {
+            const element = document.getElementById(id);
+
+            element.textContent = text;
+
+            element.classList.remove("good", "bad");
+
+            element.classList.add(
+                good ? "good" : "bad"
+            );
+        }
+
+
+        async function runDiagnostics() {
+
+            setStatus(
+                "onlineStatus",
+                navigator.onLine ? "YES" : "NO",
+                navigator.onLine
+            );
+
+
+            if (!("serviceWorker" in navigator)) {
+
+                setStatus(
+                    "supportStatus",
+                    "NO",
+                    false
+                );
+
+                setStatus(
+                    "registrationStatus",
+                    "NO",
+                    false
+                );
+
+                setStatus(
+                    "workerState",
+                    "Unavailable",
+                    false
+                );
+
+                setStatus(
+                    "controllerStatus",
+                    "NO",
+                    false
+                );
+
+                setStatus(
+                    "scopeStatus",
+                    "Unavailable",
+                    false
+                );
+
+                return;
+            }
+
+
+            setStatus(
+                "supportStatus",
+                "YES",
+                true
+            );
+
+
+            try {
+
+                const registration =
+                    await navigator.serviceWorker.getRegistration(
+                        "./"
+                    );
+
+
+                if (!registration) {
+
+                    setStatus(
+                        "registrationStatus",
+                        "NO",
+                        false
+                    );
+
+                    setStatus(
+                        "workerState",
+                        "No worker registered",
+                        false
+                    );
+
+                    setStatus(
+                        "scopeStatus",
+                        "No scope",
+                        false
+                    );
+
+                } else {
+
+                    setStatus(
+                        "registrationStatus",
+                        "YES",
+                        true
+                    );
+
+
+                    const worker =
+                        registration.active ||
+                        registration.waiting ||
+                        registration.installing;
+
+
+                    setStatus(
+                        "workerState",
+                        worker
+                            ? worker.state
+                            : "Unknown",
+                        worker?.state === "activated"
+                    );
+
+
+                    setStatus(
+                        "scopeStatus",
+                        registration.scope,
+                        true
+                    );
+
+                }
+
+
+                const controller =
+                    navigator.serviceWorker.controller;
+
+
+                setStatus(
+                    "controllerStatus",
+                    controller ? "YES" : "NO",
+                    !!controller
+                );
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                setStatus(
+                    "registrationStatus",
+                    "ERROR",
+                    false
+                );
+
+                setStatus(
+                    "workerState",
+                    error.message,
+                    false
+                );
+
+            }
+
+        }
+
+
+        document
+            .getElementById("refreshButton")
+            .addEventListener(
+                "click",
+                runDiagnostics
+            );
+
+
+        window.addEventListener(
+            "load",
+            runDiagnostics
+        );
+
+    </script>
+
+</body>
+</html>
