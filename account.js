@@ -101,15 +101,19 @@ if (loginForm) {
 
             showMessage(
                 message,
-                "Login page works! Real account login will be connected later.",
+                "Login successful! Loading your profiles...",
                 "success"
             );
+
+            setTimeout(() => {
+                window.location.href =
+                    "profiles.html";
+            }, 900);
 
         }
     );
 
 }
-
 
 function showMessage(
     element,
