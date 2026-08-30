@@ -1,1 +1,487 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    background: #050708;
+    color: white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.account-page {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 45px 20px;
+
+    overflow: hidden;
+}
+
+
+/* =============================
+   BACKGROUND
+============================= */
+
+.account-background {
+    position: fixed;
+
+    inset: -10%;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(39,229,212,0.24),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(67,93,255,0.18),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 65% 80%,
+            rgba(159,54,218,0.16),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #071113,
+            #050708 50%,
+            #091013
+        );
+
+    filter: blur(10px);
+
+    transform: scale(1.1);
+}
+
+.account-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,0.58);
+}
+
+
+/* =============================
+   CARD
+============================= */
+
+.account-card {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(520px, 100%);
+
+    padding:
+        46px
+        42px
+        40px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(6,10,11,0.88);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.6);
+}
+
+.back-button {
+    display: inline-block;
+
+    color: #a7afb5;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    margin-bottom: 30px;
+
+    transition: 0.18s;
+}
+
+.back-button:hover,
+.back-button:focus-visible {
+    color: #27e5d4;
+
+    outline: none;
+}
+
+.account-logo {
+    display: block;
+
+    width: 235px;
+
+    max-width: 80%;
+
+    margin-bottom: 30px;
+}
+
+
+/* =============================
+   HEADING
+============================= */
+
+.account-heading {
+    margin-bottom: 30px;
+}
+
+.account-heading h1 {
+    font-size: 38px;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 9px;
+}
+
+.account-heading p {
+    color: #9ba4aa;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+
+/* =============================
+   FORM
+============================= */
+
+.account-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 19px;
+}
+
+.account-form label {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    color: #d7dcdf;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.account-form input {
+    width: 100%;
+
+    height: 52px;
+
+    padding:
+        0
+        15px;
+
+    border-radius: 8px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    background:
+        rgba(255,255,255,0.055);
+
+    color: white;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.18s;
+}
+
+.account-form input::placeholder {
+    color: #677077;
+}
+
+.account-form input:focus {
+    border-color: #27e5d4;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(39,229,212,0.12);
+}
+
+
+/* =============================
+   PASSWORD
+============================= */
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 70px;
+}
+
+.show-password {
+    position: absolute;
+
+    right: 9px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: #27e5d4;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    padding: 8px;
+}
+
+
+/* =============================
+   BUTTON
+============================= */
+
+.main-account-button {
+    height: 54px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #27e5d4;
+
+    color: #03100f;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    margin-top: 4px;
+
+    transition: 0.18s;
+}
+
+.main-account-button:hover,
+.main-account-button:focus-visible {
+    transform: scale(1.02);
+
+    outline:
+        3px solid #27e5d4;
+
+    outline-offset: 3px;
+}
+
+
+/* =============================
+   LOGIN OPTIONS
+============================= */
+
+.login-options {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.remember-row {
+    flex-direction: row !important;
+
+    align-items: center;
+
+    gap: 8px !important;
+
+    cursor: pointer;
+}
+
+.remember-row input {
+    width: 17px;
+    height: 17px;
+
+    accent-color: #27e5d4;
+}
+
+.forgot-link {
+    color: #aab2b7;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    color: #27e5d4;
+}
+
+
+/* =============================
+   DIVIDER
+============================= */
+
+.account-divider {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    margin:
+        28px
+        0;
+
+    color: #646d73;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.account-divider::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 50%;
+
+    height: 1px;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+.account-divider span {
+    position: relative;
+
+    background: #080c0d;
+
+    padding: 0 13px;
+}
+
+
+/* =============================
+   SWITCH
+============================= */
+
+.account-switch {
+    text-align: center;
+
+    color: #929ba1;
+
+    font-size: 14px;
+}
+
+.account-switch a {
+    color: #27e5d4;
+
+    font-weight: 900;
+
+    text-decoration: none;
+}
+
+.account-note {
+    text-align: center;
+
+    color: #626b70;
+
+    font-size: 11px;
+
+    margin-top: 20px;
+}
+
+
+/* =============================
+   MESSAGES
+============================= */
+
+.form-message {
+    display: none;
+
+    padding: 12px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+}
+
+.form-message.show {
+    display: block;
+}
+
+.form-message.error {
+    background:
+        rgba(255,75,75,0.1);
+
+    border:
+        1px solid rgba(255,75,75,0.25);
+
+    color: #ff9c9c;
+}
+
+.form-message.success {
+    background:
+        rgba(39,229,212,0.08);
+
+    border:
+        1px solid rgba(39,229,212,0.22);
+
+    color: #67f1e5;
+}
+
+
+/* =============================
+   MOBILE
+============================= */
+
+@media (max-width: 600px) {
+
+    .account-page {
+        padding: 25px 14px;
+    }
+
+    .account-card {
+        padding:
+            34px
+            24px;
+    }
+
+    .account-heading h1 {
+        font-size: 32px;
+    }
+
+    .account-logo {
+        width: 210px;
+    }
+
+}
