@@ -32,209 +32,31 @@ body {
 
 /* =========================================
    SIDEBAR
-========================================= */
-
-.sidebar {
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 86px;
-    height: 100vh;
-
-    background:
-        rgba(4, 7, 8, 0.97);
-
-    border-right:
-        1px solid
-        rgba(255, 255, 255, 0.06);
-
-    display: flex;
-    flex-direction: column;
-
-    z-index: 1000;
-
-    overflow: hidden;
-
-    transition:
-        width 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-
-.sidebar:hover {
-    width: 250px;
-
-    box-shadow:
-        20px 0 55px
-        rgba(0, 0, 0, 0.55);
-}
-
-
-.sidebar-logo {
-    width: 250px;
-    height: 120px;
-
-    display: flex;
-    align-items: center;
-
-    padding-left: 14px;
-
-    flex-shrink: 0;
-
-    text-decoration: none;
-}
-
-
-.sidebar-logo img {
-    width: 220px;
-
-    max-width: none;
-
-    display: block;
-}
-
-
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-
-    gap: 3px;
-}
-
-
-.side-link {
-    position: relative;
-
-    width: 250px;
-    min-height: 58px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 20px;
-
-    padding:
-        0
-        24px;
-
-    color:
-        #a7adb0;
-
-    text-decoration: none;
-
-    border-left:
-        3px solid
-        transparent;
-
-    white-space: nowrap;
-
-    transition:
-        color 0.18s ease,
-        background 0.18s ease,
-        border-color 0.18s ease;
-}
-
-
-.side-link:hover,
-.side-link:focus-visible {
-    color: white;
-
-    background:
-        rgba(255, 255, 255, 0.045);
-
-    outline: none;
-}
-
-
-.side-link.active {
-    color:
-        #59f5e4;
-
-    border-left-color:
-        #59f5e4;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(89, 245, 228, 0.13),
-            transparent
-        );
-}
-
-
-.side-icon {
-    width: 36px;
-    min-width: 36px;
-
-    text-align: center;
-
-    font-size: 26px;
-
-    flex-shrink: 0;
-}
-
-
-.side-text {
-    font-size: 15px;
-
-    font-weight: 700;
-
-    opacity: 0;
-
-    transform:
-        translateX(-5px);
-
-    transition:
-        opacity 0.18s ease,
-        transform 0.18s ease;
-}
-
-
-.sidebar:hover .side-text {
-    opacity: 1;
-
-    transform:
-        translateX(0);
-}
-
-
-/* text-only items */
-
-.side-link.text-only {
-    padding-left: 62px;
-}
-
-
-.side-link.text-only .side-text {
-    margin-left: 0;
-}
-
-
-.sidebar-bottom {
-    margin-top: auto;
-
-    padding-bottom: 20px;
-}
+   ========================================= */
+
+/* NOTE: sidebar rules removed from store.css so the shared sidebar in style.css
+   is used consistently across all pages. This prevents duplicate/conflicting
+   sidebar styles that previously caused layout issues (sidebar cut into page).
+*/
 
 
 /* =========================================
    MAIN
-========================================= */
+   ========================================= */
+
+/* Keep minimal main-content fallback — the shared style.css will provide the
+   canonical layout for margin-left and spacing. */
 
 .main-content {
-    margin-left: 86px;
-
+    margin-left: 86px; /* default space for sidebar */
     min-height: 100vh;
-
     padding-bottom: 90px;
 }
 
 
 /* =========================================
    HEADER
-========================================= */
+   ========================================= */
 
 .store-header {
     padding:
@@ -359,7 +181,7 @@ body {
 
 /* =========================================
    FEATURED
-========================================= */
+   ========================================= */
 
 .featured-store {
     position: relative;
@@ -611,7 +433,7 @@ body {
 
 /* =========================================
    STORE SECTIONS
-========================================= */
+   ========================================= */
 
 .store-section {
     padding:
@@ -643,7 +465,7 @@ body {
 
 /* =========================================
    STORE GRID
-========================================= */
+   ========================================= */
 
 .store-grid {
     display: grid;
@@ -660,6 +482,26 @@ body {
 
 .store-card {
     min-width: 0;
+
+    /* Make store cards behave visually like movie cards */
+    position: relative;
+    border-radius: 9px;
+    overflow: hidden;
+    cursor: pointer;
+    transition:
+        transform 0.2s,
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.store-card:hover,
+.store-card:focus-within {
+    transform: scale(1.055);
+    outline: none;
+    box-shadow:
+        0 16px 35px rgba(0,0,0,0.6),
+        0 0 16px rgba(39,229,212,0.13);
+    z-index: 20;
 }
 
 
@@ -911,7 +753,7 @@ body {
 
 /* =========================================
    STORE NOTE
-========================================= */
+   ========================================= */
 
 .store-note {
     margin:
@@ -958,11 +800,12 @@ body {
 
 /* =========================================
    MOBILE
-========================================= */
+   ========================================= */
 
 @media (max-width: 800px) {
 
     .sidebar {
+        /* keep a minimal fallback when sidebar styles aren't loaded yet */
         width: 68px;
     }
 
@@ -996,18 +839,6 @@ body {
 
     .featured-store {
         min-height: 470px;
-    }
-
-    .featured-content {
-        padding: 30px;
-    }
-
-    .store-grid {
-        grid-template-columns:
-            repeat(
-                auto-fill,
-                minmax(190px, 1fr)
-            );
     }
 
 }
