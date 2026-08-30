@@ -319,10 +319,10 @@ async function registerWorker() {
             );
 
 
-        window.addEventListener(
-            "load",
-            runDiagnostics
-        );
+       window.addEventListener("load", async () => {
+    await registerWorker();
+    await runDiagnostics();
+});
 
     </script>
 
