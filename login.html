@@ -1,1 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Log In — PlayMovies</title>
+
+    <link rel="stylesheet" href="account.css">
+</head>
+<body>
+
+    <main class="account-page">
+
+        <div class="account-background"></div>
+        <div class="account-overlay"></div>
+
+        <section class="account-card">
+
+            <a href="welcome.html" class="back-button">
+                ← Back
+            </a>
+
+            <img
+                src="playmovies-logo.png"
+                alt="PlayMovies"
+                class="account-logo"
+            >
+
+            <div class="account-heading">
+                <h1>Welcome back</h1>
+                <p>
+                    Log in to continue watching.
+                </p>
+            </div>
+
+            <form class="account-form" id="loginForm">
+
+                <label>
+                    Email
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="you@example.com"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Password
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            data-target="loginPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+                </label>
+
+                <div class="login-options">
+
+                    <label class="remember-row">
+                        <input type="checkbox">
+                        <span>Remember me</span>
+                    </label>
+
+                    <a href="#" class="forgot-link">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+                <p class="form-message" id="loginMessage"></p>
+
+                <button
+                    type="submit"
+                    class="main-account-button"
+                >
+                    Log In
+                </button>
+
+            </form>
+
+            <div class="account-divider">
+                <span>OR</span>
+            </div>
+
+            <p class="account-switch">
+                New to PlayMovies?
+                <a href="signup.html">Create an Account</a>
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="account.js"></script>
+
+</body>
+</html>
