@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Who's Watching? — PlayMovies</title>
+
+    <link rel="stylesheet" href="profiles.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         PROFILE SELECT SCREEN
+    ========================== -->
+
+    <main class="profile-screen" id="profileScreen">
+
+        <img
+            src="playmovies-logo.png"
+            alt="PlayMovies"
+            class="playmovies-logo"
+        >
+
+        <section class="profile-content">
+
+            <p class="welcome-text">
+                WELCOME BACK
+            </p>
+
+            <h1>Who's Watching?</h1>
+
+            <p class="profile-description">
+                Choose a profile to start watching.
+            </p>
+
+
+            <!-- PROFILES -->
+            <div class="profiles" id="profiles">
+
+                <button
+                    class="profile-card"
+                    data-profile="Alex"
+                >
+                    <span class="profile-avatar avatar-one">
+                        A
+                    </span>
+
+                    <span class="profile-name">
+                        Alex
+                    </span>
+                </button>
+
+
+                <button
+                    class="profile-card"
+                    data-profile="Movies"
+                >
+                    <span class="profile-avatar avatar-two">
+                        M
+                    </span>
+
+                    <span class="profile-name">
+                        Movies
+                    </span>
+                </button>
+
+
+                <button
+                    class="profile-card"
+                    data-profile="Kids"
+                >
+                    <span class="profile-avatar avatar-three">
+                        K
+                    </span>
+
+                    <span class="profile-name">
+                        Kids
+                    </span>
+                </button>
+
+
+                <!-- ADD PROFILE -->
+                <button
+                    class="profile-card add-profile-card"
+                    id="addProfileButton"
+                >
+                    <span class="profile-avatar add-avatar">
+                        +
+                    </span>
+
+                    <span class="profile-name">
+                        Add Profile
+                    </span>
+                </button>
+
+            </div>
+
+
+            <button
+                class="manage-profiles"
+                id="manageProfilesButton"
+            >
+                Manage Profiles
+            </button>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         LOADING SCREEN
+    ========================== -->
+
+    <section
+        class="loading-screen"
+        id="loadingScreen"
+        aria-hidden="true"
+    >
+
+        <img
+            src="playmovies-logo.png"
+            alt="PlayMovies"
+            class="loading-logo"
+        >
+
+        <div
+            class="loading-spinner"
+            aria-label="Loading"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CLAPPER TRANSITION
+    ========================== -->
+
+    <section
+        class="transition-screen"
+        id="transitionScreen"
+        aria-hidden="true"
+    >
+
+        <div
+            class="clapper-wrapper"
+            id="clapper"
+        >
+
+            <!-- TOP HINGED CLAPPER -->
+            <div class="clapper-top">
+
+                <div class="stripe stripe-dark"></div>
+                <div class="stripe stripe-blue"></div>
+                <div class="stripe stripe-dark"></div>
+                <div class="stripe stripe-blue"></div>
+                <div class="stripe stripe-dark"></div>
+                <div class="stripe stripe-blue"></div>
+
+            </div>
+
+
+            <!-- MAIN BOARD -->
+            <div class="clapper-body">
+
+                <div class="clapper-line"></div>
+
+                <div class="clapper-brand">
+                    PLAYMOVIES
+                </div>
+
+                <div class="clapper-subtitle">
+                    MOVIES ANYWHERE, EVERYWHERE.
+                </div>
+
+                <div class="clapper-details">
+
+                    <span>SCENE</span>
+                    <span>TAKE</span>
+                    <span>ROLL</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="profiles.js"></script>
+
+</body>
+</html>
