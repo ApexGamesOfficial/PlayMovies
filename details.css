@@ -33,22 +33,46 @@ body {
 
     z-index: 100;
 
-    padding: 12px 18px;
+    min-height: 48px;
 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 18px;
+
+    border: 2px solid transparent;
     border-radius: 8px;
 
-    background: rgba(0,0,0,0.55);
+    background: rgba(0, 0, 0, 0.55);
 
     color: white;
 
     text-decoration: none;
-
-    font-weight: 700;
+    font-weight: 800;
 
     backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
 }
 
+.back-button:hover,
+.back-button:focus-visible {
+    transform: scale(1.06);
 
+    border-color: #2be3d7;
+
+    box-shadow:
+        0 0 20px rgba(43, 227, 215, 0.28);
+
+    background: rgba(20, 28, 30, 0.92);
+
+    outline: none;
+}
 /* ========================================
    HERO
 ======================================== */
@@ -615,4 +639,68 @@ button {
 .similar-card:focus {
     outline: 3px solid #2be3d7;
     outline-offset: 3px;
+}
+button,
+a,
+.cast-card {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+.cast-card:focus-visible {
+    outline: none;
+}
+
+@media (pointer: coarse) {
+    .primary-button,
+    .secondary-button,
+    .purchase-button,
+    .back-button {
+        min-height: 56px;
+    }
+}
+
+@media (max-width: 700px) {
+    .details-actions,
+    .purchase-buttons {
+        gap: 10px;
+    }
+
+    .primary-button,
+    .secondary-button,
+    .purchase-button {
+        min-height: 52px;
+        padding: 0 18px;
+    }
+
+    .back-button {
+        top: 16px;
+        left: 16px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .primary-button,
+    .secondary-button,
+    .purchase-button,
+    .back-button {
+        min-height: 58px;
+        font-size: 18px;
+    }
+
+    .cast-card:hover,
+    .cast-card:focus-visible,
+    .similar-card:hover,
+    .similar-card:focus-visible,
+    .primary-button:hover,
+    .primary-button:focus-visible,
+    .secondary-button:hover,
+    .secondary-button:focus-visible,
+    .purchase-button:hover,
+    .purchase-button:focus-visible,
+    .back-button:hover,
+    .back-button:focus-visible {
+        transform: scale(1.07);
+    }
 }
