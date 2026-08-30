@@ -396,6 +396,137 @@ movie.similar.forEach(
     }
 );
 
+// ========================================
+// OWNERSHIP / RENTAL
+// ========================================
+
+const watchButton =
+    document.getElementById("watchButton");
+
+const purchaseArea =
+    document.getElementById("purchaseArea");
+
+const rentButton =
+    document.getElementById("rentButton");
+
+const buyButton =
+    document.getElementById("buyButton");
+
+
+const OWNED_KEY =
+    "playmoviesOwnedTitles";
+
+const RENTED_KEY =
+    "playmoviesRentedTitles";
+
+
+function getStoredTitles(key) {
+
+    return JSON.parse(
+        localStorage.getItem(key)
+        ||
+        "[]"
+    );
+
+}
+
+
+function hasAccessToMovie() {
+
+    const owned =
+        getStoredTitles(OWNED_KEY);
+
+    const rented =
+        getStoredTitles(RENTED_KEY);
+
+
+    return (
+        owned.includes(movieId)
+        ||
+        rented.includes(movieId)
+    );
+
+}
+
+
+function updatePurchaseUI() {
+
+    const hasAccess =
+        hasAccessToMovie();
+
+
+    if (hasAccess) {
+
+        watchButton.style.display =
+            "inline-flex";
+
+        purchaseArea.style.display =
+            "none";
+
+    }
+
+    else {
+
+        watchButton.style.display =
+            "none";
+
+        purchaseArea.style.display =
+            "flex";
+
+    }
+
+}
+
+
+rentButton.addEventListener(
+    "click",
+    () => {
+
+        const rented =
+            getStoredTitles(RENTED_KEY);
+
+        if (!rented.includes(movieId)) {
+
+            rented.push(movieId);
+
+            localStorage.setItem(
+                RENTED_KEY,
+                JSON.stringify(rented)
+            );
+
+        }
+
+        updatePurchaseUI();
+
+    }
+);
+
+
+buyButton.addEventListener(
+    "click",
+    () => {
+
+        const owned =
+            getStoredTitles(OWNED_KEY);
+
+        if (!owned.includes(movieId)) {
+
+            owned.push(movieId);
+
+            localStorage.setItem(
+                OWNED_KEY,
+                JSON.stringify(owned)
+            );
+
+        }
+
+        updatePurchaseUI();
+
+    }
+);
+
+
+updatePurchaseUI();
 
 // ========================================
 // TRAILER
