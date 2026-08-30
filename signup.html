@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Create Account — PlayMovies</title>
+
+    <link rel="stylesheet" href="account.css">
+</head>
+<body>
+
+    <main class="account-page">
+
+        <div class="account-background"></div>
+        <div class="account-overlay"></div>
+
+        <section class="account-card">
+
+            <a href="welcome.html" class="back-button">
+                ← Back
+            </a>
+
+            <img
+                src="playmovies-logo.png"
+                alt="PlayMovies"
+                class="account-logo"
+            >
+
+            <div class="account-heading">
+                <h1>Create your account</h1>
+                <p>
+                    Start watching with PlayMovies.
+                </p>
+            </div>
+
+            <form class="account-form" id="signupForm">
+
+                <label>
+                    Display Name
+
+                    <input
+                        type="text"
+                        id="displayName"
+                        placeholder="Your name"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Email
+
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        placeholder="you@example.com"
+                        required
+                    >
+                </label>
+
+                <label>
+                    Password
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="signupPassword"
+                            placeholder="Create a password"
+                            minlength="8"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            data-target="signupPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+                </label>
+
+                <label>
+                    Confirm Password
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Enter password again"
+                            minlength="8"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            data-target="confirmPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+                </label>
+
+                <p class="form-message" id="signupMessage"></p>
+
+                <button
+                    type="submit"
+                    class="main-account-button"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+            <div class="account-divider">
+                <span>OR</span>
+            </div>
+
+            <p class="account-switch">
+                Already have a PlayMovies account?
+                <a href="login.html">Log In</a>
+            </p>
+
+            <p class="account-note">
+                Creating an account does not start a subscription.
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="account.js"></script>
+
+</body>
+</html>
