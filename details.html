@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayMovies — Details</title>
+
+    <link rel="stylesheet" href="details.css">
+</head>
+
+<body>
+
+    <a href="index.html" class="back-button">
+        ← Back
+    </a>
+
+
+    <main class="details-page">
+
+        <!-- HERO -->
+
+        <section class="details-hero" id="detailsHero">
+
+            <div class="hero-shade"></div>
+
+            <div class="details-content">
+
+                <p class="details-label">
+                    PLAYMOVIES
+                </p>
+
+                <h1 id="movieTitle">
+                    Movie Title
+                </h1>
+
+                <div class="movie-meta">
+                    <span id="movieYear">2026</span>
+                    <span>•</span>
+                    <span id="movieRating">PG-13</span>
+                    <span>•</span>
+                    <span id="movieRuntime">2h 8m</span>
+                </div>
+
+                <p
+                    class="movie-description"
+                    id="movieDescription"
+                >
+                    Movie description goes here.
+                </p>
+
+
+                <div class="details-actions">
+
+                    <button class="primary-button">
+                        ▶ Watch Now
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        id="trailerButton"
+                    >
+                        ▷ Trailer
+                    </button>
+
+                    <button
+                        class="secondary-button"
+                        id="myListButton"
+                    >
+                        + My List
+                    </button>
+
+                </div>
+
+
+                <div class="purchase-area">
+
+                    <span
+                        class="included-badge"
+                        id="includedBadge"
+                    >
+                        Included with PlayMovies+
+                    </span>
+
+                    <button
+                        class="purchase-button"
+                        id="rentButton"
+                    >
+                        Rent $4.99
+                    </button>
+
+                    <button
+                        class="purchase-button"
+                        id="buyButton"
+                    >
+                        Buy $14.99
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INFO -->
+
+        <section class="details-section">
+
+            <h2>About</h2>
+
+            <div class="info-grid">
+
+                <div>
+                    <span class="info-label">Genres</span>
+                    <p id="movieGenres">
+                        Sci-Fi, Action
+                    </p>
+                </div>
+
+                <div>
+                    <span class="info-label">Release Year</span>
+                    <p id="movieReleaseYear">
+                        2026
+                    </p>
+                </div>
+
+                <div>
+                    <span class="info-label">Rating</span>
+                    <p id="movieRatingInfo">
+                        PG-13
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CAST -->
+
+        <section class="details-section">
+
+            <h2>Cast & Crew</h2>
+
+            <div
+                class="cast-row"
+                id="castRow"
+            ></div>
+
+        </section>
+
+
+        <!-- SIMILAR -->
+
+        <section class="details-section">
+
+            <h2>Watch Similar</h2>
+
+            <div
+                class="similar-row"
+                id="similarRow"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- TRAILER MODAL -->
+
+    <div
+        class="trailer-modal"
+        id="trailerModal"
+    >
+
+        <div class="trailer-container">
+
+            <button
+                class="close-trailer"
+                id="closeTrailer"
+            >
+                ✕
+            </button>
+
+            <div class="trailer-placeholder">
+
+                <h2 id="trailerTitle">
+                    Trailer
+                </h2>
+
+                <p>
+                    Trailer playback will go here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="details.js"></script>
+
+</body>
+</html>
