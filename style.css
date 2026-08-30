@@ -703,3 +703,238 @@ body {
     }
 
 }
+/* ========================================
+   PLAYMOVIES SCREENSAVER
+======================================== */
+
+.playmovies-screensaver {
+    position: fixed;
+    inset: 0;
+
+    z-index: 999999;
+
+    background: #030506;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.playmovies-screensaver.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ========================================
+   SLIDES
+======================================== */
+
+.screensaver-slide {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding:
+        0
+        clamp(40px, 7vw, 120px)
+        clamp(100px, 12vh, 160px);
+
+    opacity: 0;
+
+    transform: scale(1.03);
+
+    transition:
+        opacity 1.5s ease,
+        transform 8s ease;
+
+    pointer-events: none;
+}
+
+.screensaver-slide.active {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* Temporary backgrounds */
+
+.screensaver-slide:nth-child(1) {
+    background:
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(24, 220, 210, 0.28),
+            transparent 35%
+        ),
+        linear-gradient(
+            115deg,
+            #020405,
+            #071416 55%,
+            #082629
+        );
+}
+
+.screensaver-slide:nth-child(2) {
+    background:
+        radial-gradient(
+            circle at 65% 40%,
+            rgba(46, 126, 255, 0.25),
+            transparent 40%
+        ),
+        linear-gradient(
+            120deg,
+            #020405,
+            #07111c,
+            #101622
+        );
+}
+
+.screensaver-slide:nth-child(3) {
+    background:
+        radial-gradient(
+            circle at 70% 35%,
+            rgba(35, 233, 217, 0.2),
+            transparent 35%
+        ),
+        linear-gradient(
+            120deg,
+            #030405,
+            #101416,
+            #071b1c
+        );
+}
+
+
+/* ========================================
+   DARK FADE
+======================================== */
+
+.screensaver-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.85),
+            rgba(0,0,0,0.12) 55%,
+            rgba(0,0,0,0.25)
+        );
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.screensaver-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 680px;
+}
+
+.screensaver-label {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: #2be3d7;
+
+    font-size: clamp(12px, 1vw, 16px);
+
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+}
+
+.screensaver-content h1 {
+    margin: 0 0 18px;
+
+    font-size:
+        clamp(
+            48px,
+            7vw,
+            100px
+        );
+
+    line-height: 0.95;
+}
+
+.screensaver-content p {
+    margin: 0;
+
+    max-width: 600px;
+
+    color: #d3d7d8;
+
+    font-size:
+        clamp(
+            16px,
+            1.5vw,
+            23px
+        );
+
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.screensaver-footer {
+    position: absolute;
+
+    left: 50%;
+    bottom: 32px;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    transform: translateX(-50%);
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 14px;
+
+    white-space: nowrap;
+}
+
+.screensaver-logo {
+    width: 130px;
+
+    opacity: 0.8;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .screensaver-slide {
+        padding:
+            0
+            25px
+            120px;
+    }
+
+    .screensaver-footer {
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+}
