@@ -1,3 +1,24 @@
+// ========================================
+// PLAYMOVIES + SUPABASE
+// ========================================
+
+const SUPABASE_URL =
+    "https://hweqdmphmepfycfmwblz.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_ir_XW-4pWIC1kFsIicGRAA_HHTKQxVS";
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+// ========================================
+// SHOW / HIDE PASSWORD
+// ========================================
+
 const showPasswordButtons =
     document.querySelectorAll(".show-password");
 
@@ -31,6 +52,10 @@ showPasswordButtons.forEach(button => {
 });
 
 
+// ========================================
+// CREATE ACCOUNT
+// ========================================
+
 const signupForm =
     document.getElementById("signupForm");
 
@@ -38,9 +63,44 @@ if (signupForm) {
 
     signupForm.addEventListener(
         "submit",
-        event => {
+        async event => {
 
             event.preventDefault();
+
+            const message =
+                document.getElementById(
+                    "signupMessage"
+                );
+
+            const firstName =
+                document.getElementById(
+                    "firstName"
+                ).value.trim();
+
+            const lastName =
+                document.getElementById(
+                    "lastName"
+                ).value.trim();
+
+            const displayName =
+                document.getElementById(
+                    "displayName"
+                ).value.trim();
+
+            const email =
+                document.getElementById(
+                    "signupEmail"
+                ).value.trim();
+
+            const dateOfBirth =
+                document.getElementById(
+                    "dateOfBirth"
+                ).value;
+
+            const gender =
+                document.getElementById(
+                    "gender"
+                ).value;
 
             const password =
                 document.getElementById(
@@ -52,10 +112,8 @@ if (signupForm) {
                     "confirmPassword"
                 ).value;
 
-            const message =
-                document.getElementById(
-                    "signupMessage"
-                );
+
+            // Password check
 
             if (
                 password !==
@@ -71,17 +129,121 @@ if (signupForm) {
                 return;
             }
 
+
             showMessage(
                 message,
-                "Account page works! Real account creation will be connected later.",
+                "Creating your PlayMovies account...",
                 "success"
             );
+
+
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .auth
+                        .signUp({
+
+                            email: email,
+
+                            password: password,
+
+                            options: {
+
+                                data: {
+
+                                    first_name:
+                                        firstName,
+
+                                    last_name:
+                                        lastName,
+
+                                    display_name:
+                                        displayName,
+
+                                    date_of_birth:
+                                        dateOfBirth,
+
+                                    gender:
+                                        gender || null
+
+                                }
+
+                            }
+
+                        });
+
+
+                if (error) {
+
+                    showMessage(
+                        message,
+                        error.message,
+                        "error"
+                    );
+
+                    return;
+                }
+
+
+                // If Supabase immediately creates
+                // a logged-in session
+
+                if (data.session) {
+
+                    showMessage(
+                        message,
+                        "Account created! Loading your profiles...",
+                        "success"
+                    );
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "profiles.html";
+
+                    }, 1200);
+
+                }
+
+                else {
+
+                    // Email confirmation is enabled
+
+                    showMessage(
+                        message,
+                        "Account created! Check your email to verify your PlayMovies account.",
+                        "success"
+                    );
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                showMessage(
+                    message,
+                    "Something went wrong while creating your account.",
+                    "error"
+                );
+
+            }
 
         }
     );
 
 }
 
+
+// ========================================
+// LOG IN
+// ========================================
 
 const loginForm =
     document.getElementById("loginForm");
@@ -90,7 +252,7 @@ if (loginForm) {
 
     loginForm.addEventListener(
         "submit",
-        event => {
+        async event => {
 
             event.preventDefault();
 
@@ -99,21 +261,95 @@ if (loginForm) {
                     "loginMessage"
                 );
 
+            const email =
+                document.getElementById(
+                    "loginEmail"
+                ).value.trim();
+
+            const password =
+                document.getElementById(
+                    "loginPassword"
+                ).value;
+
+
             showMessage(
                 message,
-                "Login successful! Loading your profiles...",
+                "Logging you in...",
                 "success"
             );
 
-            setTimeout(() => {
-                window.location.href =
-                    "profiles.html";
-            }, 900);
+
+            try {
+
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient
+                        .auth
+                        .signInWithPassword({
+
+                            email:
+                                email,
+
+                            password:
+                                password
+
+                        });
+
+
+                if (error) {
+
+                    showMessage(
+                        message,
+                        "Incorrect email or password.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+
+                if (data.user) {
+
+                    showMessage(
+                        message,
+                        "Welcome back! Loading your profiles...",
+                        "success"
+                    );
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "profiles.html";
+
+                    }, 900);
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                showMessage(
+                    message,
+                    "Something went wrong while logging in.",
+                    "error"
+                );
+
+            }
 
         }
     );
 
 }
+
+
+// ========================================
+// MESSAGE HELPER
+// ========================================
 
 function showMessage(
     element,
@@ -121,7 +357,10 @@ function showMessage(
     type
 ) {
 
-    element.textContent = text;
+    if (!element) return;
+
+    element.textContent =
+        text;
 
     element.className =
         `form-message show ${type}`;
