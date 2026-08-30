@@ -1,181 +1,602 @@
-<!DOCTYPE html>
-<html lang="en">
+/* =========================================
+   PLAYMOVIES v0.1
+   Movies Anywhere, Everywhere.
+========================================= */
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <title>PlayMovies — Movies Anywhere, Everywhere</title>
+html {
+    scroll-behavior: smooth;
+}
 
-    <link rel="stylesheet" href="style.css">
-</head>
+body {
+    background: #07090b;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
 
-<body>
 
-    <!-- NAVIGATION -->
+/* =========================================
+   NAVBAR
+========================================= */
 
-    <header class="navbar">
+.navbar {
+    height: 82px;
+    width: 100%;
 
-        <a href="index.html" class="logo">
-            <img src="playmovies-logo.png" alt="PlayMovies">
-        </a>
+    display: flex;
+    align-items: center;
 
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">TV Shows</a>
-            <a href="#">My List</a>
-        </nav>
+    padding: 0 4%;
 
-        <div class="nav-right">
+    position: sticky;
+    top: 0;
+    z-index: 100;
 
-            <button class="search-button">
-                Search
-            </button>
+    background: rgba(7, 9, 11, 0.96);
 
-            <a href="#" class="sign-in">
-                Sign In
-            </a>
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.07);
+}
 
-            <a href="#" class="create-account">
-                Create Account
-            </a>
 
-        </div>
+/* LOGO */
 
-    </header>
+.logo {
+    display: flex;
+    align-items: center;
 
+    margin-right: 45px;
+}
 
-    <!-- FEATURED MOVIE -->
+.logo img {
+    width: 190px;
+    height: auto;
+    display: block;
+}
 
-    <main>
 
-        <section class="hero">
+/* NAVIGATION */
 
-            <div class="hero-content">
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
 
-                <p class="featured-label">
-                    PLAYMOVIES FEATURED
-                </p>
+.navbar nav a {
+    color: #a6adb5;
 
-                <h1>Featured Movie</h1>
+    text-decoration: none;
 
-                <p class="movie-info">
-                    PG-13 &nbsp; • &nbsp; 2026 &nbsp; • &nbsp; 2h 8m
-                </p>
+    font-size: 14px;
+    font-weight: 700;
 
-                <p class="movie-description">
-                    Your featured movies will appear here.
-                    Discover new stories, build your watchlist,
-                    and watch anywhere.
-                </p>
+    transition: 0.2s;
+}
 
-                <div class="hero-buttons">
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #27e5d4;
+}
 
-                    <button class="watch-button">
-                        ▶ Watch Now
-                    </button>
 
-                    <button class="info-button">
-                        More Info
-                    </button>
+/* RIGHT SIDE */
 
-                </div>
+.nav-right {
+    margin-left: auto;
 
-            </div>
+    display: flex;
+    align-items: center;
 
-        </section>
+    gap: 13px;
+}
 
+.search-button {
+    background: transparent;
 
-        <!-- TRENDING -->
+    border: 0;
 
-        <section class="movie-section">
+    color: #c5cbd1;
 
-            <h2>Trending Now</h2>
+    font-size: 13px;
+    font-weight: 700;
 
-            <div class="movie-row">
+    cursor: pointer;
 
-                <button class="movie-card">
-                    <span>MOVIE 1</span>
-                </button>
+    padding: 12px;
+}
 
-                <button class="movie-card">
-                    <span>MOVIE 2</span>
-                </button>
+.search-button:hover {
+    color: #27e5d4;
+}
 
-                <button class="movie-card">
-                    <span>MOVIE 3</span>
-                </button>
+.sign-in {
+    color: white;
 
-                <button class="movie-card">
-                    <span>MOVIE 4</span>
-                </button>
+    text-decoration: none;
 
-                <button class="movie-card">
-                    <span>MOVIE 5</span>
-                </button>
+    font-size: 13px;
+    font-weight: 700;
 
-            </div>
+    padding: 11px 15px;
+}
 
-        </section>
+.create-account {
+    background: #27e5d4;
 
+    color: #04100f;
 
-        <!-- NEW RELEASES -->
+    text-decoration: none;
 
-        <section class="movie-section">
+    font-size: 12px;
+    font-weight: 900;
 
-            <h2>New Releases</h2>
+    padding: 12px 18px;
 
-            <div class="movie-row">
+    border-radius: 4px;
 
-                <button class="movie-card">
-                    <span>MOVIE 6</span>
-                </button>
+    transition: 0.2s;
+}
 
-                <button class="movie-card">
-                    <span>MOVIE 7</span>
-                </button>
+.create-account:hover {
+    background: #5af3e6;
 
-                <button class="movie-card">
-                    <span>MOVIE 8</span>
-                </button>
+    transform: translateY(-1px);
+}
 
-                <button class="movie-card">
-                    <span>MOVIE 9</span>
-                </button>
 
-                <button class="movie-card">
-                    <span>MOVIE 10</span>
-                </button>
+/* =========================================
+   HERO / FEATURED MOVIE
+========================================= */
 
-            </div>
+.hero {
+    min-height: 570px;
 
-        </section>
+    display: flex;
+    align-items: flex-end;
 
+    position: relative;
 
-        <!-- MY LIST -->
+    padding: 70px 5%;
 
-        <section class="movie-section">
+    overflow: hidden;
 
-            <h2>My List</h2>
+    background:
+        radial-gradient(
+            circle at 72% 38%,
+            rgba(39, 229, 212, 0.18),
+            transparent 28%
+        ),
+        linear-gradient(
+            90deg,
+            #07090b 0%,
+            #0a1113 42%,
+            #071718 100%
+        );
+}
 
-            <div class="empty-list">
 
-                <h3>Your list is waiting.</h3>
+/* subtle cinematic texture */
 
-                <p>
-                    Add movies and shows you want to watch later.
-                </p>
+.hero::before {
+    content: "";
 
-            </div>
+    position: absolute;
+    inset: 0;
 
-        </section>
+    background:
+        linear-gradient(
+            to top,
+            #07090b 0%,
+            transparent 45%
+        );
 
-    </main>
+    pointer-events: none;
+}
 
 
-    <script src="script.js"></script>
+/* decorative shape */
 
-</body>
+.hero::after {
+    content: "";
 
-</html>
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: 8%;
+    top: 20px;
+
+    border:
+        1px solid rgba(39, 229, 212, 0.12);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.hero-content {
+    max-width: 600px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* FEATURED LABEL */
+
+.featured-label {
+    color: #27e5d4;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 12px;
+}
+
+
+/* MOVIE TITLE */
+
+.hero h1 {
+    font-size: clamp(48px, 6vw, 78px);
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 18px;
+}
+
+
+/* MOVIE INFORMATION */
+
+.movie-info {
+    color: #b3bbc4;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 17px;
+}
+
+
+/* DESCRIPTION */
+
+.movie-description {
+    max-width: 520px;
+
+    color: #9da5ae;
+
+    font-size: 16px;
+
+    line-height: 1.65;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+    display: flex;
+
+    gap: 11px;
+
+    margin-top: 27px;
+}
+
+.watch-button,
+.info-button {
+    min-height: 47px;
+
+    padding: 0 22px;
+
+    border: 0;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.watch-button {
+    background: #27e5d4;
+
+    color: #04100f;
+}
+
+.watch-button:hover {
+    background: #5af3e6;
+
+    transform: scale(1.03);
+}
+
+.info-button {
+    background: rgba(255, 255, 255, 0.11);
+
+    color: white;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-button:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+
+/* =========================================
+   MOVIE SECTIONS
+========================================= */
+
+.movie-section {
+    padding: 30px 5% 10px;
+}
+
+.movie-section h2 {
+    font-size: 21px;
+
+    margin-bottom: 16px;
+
+    letter-spacing: -0.4px;
+}
+
+
+/* =========================================
+   HORIZONTAL MOVIE ROWS
+========================================= */
+
+.movie-row {
+    display: flex;
+
+    gap: 14px;
+
+    overflow-x: auto;
+
+    padding:
+        5px 3px 18px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #27e5d4 #101416;
+}
+
+.movie-row::-webkit-scrollbar {
+    height: 6px;
+}
+
+.movie-row::-webkit-scrollbar-track {
+    background: #101416;
+}
+
+.movie-row::-webkit-scrollbar-thumb {
+    background: #27e5d4;
+
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   MOVIE CARD
+========================================= */
+
+.movie-card {
+    position: relative;
+
+    flex: 0 0 230px;
+
+    height: 132px;
+
+    border: 0;
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #12191c,
+            #0c2828
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.06);
+
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.movie-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(39, 229, 212, 0.22),
+            transparent 40%
+        );
+}
+
+.movie-card span {
+    position: absolute;
+
+    left: 14px;
+    bottom: 12px;
+
+    z-index: 2;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+/* MOUSE + TV FOCUS */
+
+.movie-card:hover,
+.movie-card:focus-visible {
+    transform: scale(1.07);
+
+    border-color: #27e5d4;
+
+    box-shadow:
+        0 0 0 2px rgba(39, 229, 212, 0.15);
+
+    outline: none;
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   EMPTY MY LIST
+========================================= */
+
+.empty-list {
+    min-height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 28px;
+
+    background: #0d1114;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.06);
+
+    border-radius: 6px;
+
+    margin-bottom: 60px;
+}
+
+.empty-list h3 {
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+.empty-list p {
+    color: #777f87;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   TV / KEYBOARD FOCUS
+========================================= */
+
+button:focus-visible,
+a:focus-visible {
+    outline:
+        3px solid #27e5d4;
+
+    outline-offset: 4px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 950px) {
+
+    .navbar nav {
+        display: none;
+    }
+
+    .logo img {
+        width: 165px;
+    }
+
+    .hero {
+        min-height: 520px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .navbar {
+        height: 72px;
+
+        padding: 0 18px;
+    }
+
+    .logo {
+        margin-right: 10px;
+    }
+
+    .logo img {
+        width: 145px;
+    }
+
+    .sign-in {
+        display: none;
+    }
+
+    .search-button {
+        display: none;
+    }
+
+    .create-account {
+        padding: 10px 12px;
+
+        font-size: 10px;
+    }
+
+    .hero {
+        min-height: 480px;
+
+        padding:
+            55px 22px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .movie-description {
+        font-size: 14px;
+    }
+
+    .movie-section {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .movie-card {
+        flex-basis: 200px;
+
+        height: 115px;
+    }
+
+}
