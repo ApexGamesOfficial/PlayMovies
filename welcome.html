@@ -131,29 +131,7 @@
 
 
 <script src="connection.js"></script>
-    <script>
-if ("serviceWorker" in navigator) {
-
-    window.addEventListener("load", () => {
-
-        navigator.serviceWorker
-            .register("./service-worker.js")
-            .then(() => {
-                console.log(
-                    "PlayMovies offline system ready."
-                );
-            })
-            .catch(error => {
-                console.error(
-                    "PlayMovies service worker failed:",
-                    error
-                );
-            });
-
-    });
-
-}
-</script>
+    
 </body>
 
 </html>
