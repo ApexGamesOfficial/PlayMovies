@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings — PlayMovies</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="settings.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="playmovies-logo.png" alt="PlayMovies">
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="index.html" class="side-link">
+                <span class="side-icon">⌂</span>
+                <span class="side-text">Home</span>
+            </a>
+
+            <a href="search.html" class="side-link">
+                <span class="side-icon">⌕</span>
+                <span class="side-text">Search</span>
+            </a>
+
+            <a href="movies.html" class="side-link text-only">
+                <span class="side-text">Movies</span>
+            </a>
+
+            <a href="tvshows.html" class="side-link text-only">
+                <span class="side-text">TV Shows</span>
+            </a>
+
+            <a href="mylist.html" class="side-link">
+                <span class="side-icon">+</span>
+                <span class="side-text">My List</span>
+            </a>
+
+            <a href="subscriptions.html" class="side-link">
+                <span class="side-icon">★</span>
+                <span class="side-text">Subscriptions</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="profile.html" class="side-link">
+                <span class="side-icon"></span>
+                <span class="side-text">Profile</span>
+            </a>
+
+            <a href="settings.html" class="side-link text-only active">
+                <span class="side-text">Settings</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <main class="settings-page">
+
+        <header class="settings-header">
+
+            <p class="settings-eyebrow">
+                PLAYMOVIES
+            </p>
+
+            <h1>Settings</h1>
+
+            <p>
+                Customize how PlayMovies works for you.
+            </p>
+
+        </header>
+
+
+        <section class="settings-grid">
+
+            <!-- PLAYBACK -->
+
+            <article class="settings-panel">
+
+                <div class="panel-header">
+                    <span class="panel-label">PLAYBACK</span>
+                    <h2>Playback</h2>
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div>
+                        <h3>Autoplay Next Episode</h3>
+
+                        <p>
+                            Automatically start the next episode.
+                        </p>
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="autoplayNext"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <h3>Autoplay Previews</h3>
+
+                        <p>
+                            Automatically play previews while browsing.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="autoplayPreviews"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-select-row">
+
+                    <div>
+
+                        <h3>Playback Quality</h3>
+
+                        <p>
+                            Choose your preferred streaming quality.
+                        </p>
+
+                    </div>
+
+                    <select id="playbackQuality">
+
+                        <option value="auto">
+                            Auto
+                        </option>
+
+                        <option value="720p">
+                            720p
+                        </option>
+
+                        <option value="1080p">
+                            1080p
+                        </option>
+
+                        <option value="4k">
+                            4K
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </article>
+
+
+            <!-- SUBTITLES -->
+
+            <article class="settings-panel">
+
+                <div class="panel-header">
+
+                    <span class="panel-label">
+                        LANGUAGE
+                    </span>
+
+                    <h2>Subtitles & Language</h2>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <h3>Subtitles by Default</h3>
+
+                        <p>
+                            Automatically enable subtitles when available.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="defaultSubtitles"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-select-row">
+
+                    <div>
+
+                        <h3>Preferred Language</h3>
+
+                        <p>
+                            Your preferred PlayMovies language.
+                        </p>
+
+                    </div>
+
+                    <select id="preferredLanguage">
+
+                        <option value="english">
+                            English
+                        </option>
+
+                        <option value="spanish">
+                            Spanish
+                        </option>
+
+                        <option value="french">
+                            French
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACCESSIBILITY -->
+
+            <article class="settings-panel">
+
+                <div class="panel-header">
+
+                    <span class="panel-label">
+                        ACCESSIBILITY
+                    </span>
+
+                    <h2>Accessibility</h2>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <h3>Reduced Motion</h3>
+
+                        <p>
+                            Reduce animations and motion effects.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="reducedMotion"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </article>
+
+
+            <!-- NOTIFICATIONS -->
+
+            <article class="settings-panel">
+
+                <div class="panel-header">
+
+                    <span class="panel-label">
+                        NOTIFICATIONS
+                    </span>
+
+                    <h2>Notifications</h2>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <h3>Email Notifications</h3>
+
+                        <p>
+                            Receive PlayMovies updates and account notifications.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="emailNotifications"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <section class="save-area">
+
+            <div>
+
+                <h3>Your Settings</h3>
+
+                <p id="saveStatus">
+                    Changes are saved on this device.
+                </p>
+
+            </div>
+
+            <button id="saveSettings">
+                Save Settings
+            </button>
+
+        </section>
+
+
+        <section class="security-panel">
+
+            <div>
+
+                <span class="panel-label">
+                    ACCOUNT
+                </span>
+
+                <h2>Account & Security</h2>
+
+                <p>
+                    Manage your PlayMovies account and security.
+                </p>
+
+            </div>
+
+            <a
+                href="profile.html"
+                class="account-button"
+            >
+                Manage Account
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <script src="settings.js"></script>
+
+</body>
+</html>
