@@ -67,7 +67,70 @@
         </section>
 
     </main>
+<!-- PLAYMOVIES CONNECTION LOADING -->
 
+<div
+    class="connection-loading"
+    id="connectionLoading"
+    aria-hidden="true"
+>
+    <img
+        src="playmovies-logo.png"
+        alt="PlayMovies"
+        class="connection-logo"
+    >
+
+    <div class="connection-spinner"></div>
+</div>
+
+
+<!-- PLAYMOVIES OFFLINE SCREEN -->
+
+<div
+    class="offline-screen"
+    id="offlineScreen"
+    aria-hidden="true"
+>
+    <div class="offline-content">
+
+        <img
+            src="playmovies-logo.png"
+            alt="PlayMovies"
+            class="offline-logo"
+        >
+
+        <div class="offline-icon">
+            !
+        </div>
+
+        <h1>No Internet Connection</h1>
+
+        <p>
+            PlayMovies couldn't connect.
+            Check your internet connection
+            and try again.
+        </p>
+
+        <div class="offline-actions">
+
+            <button id="retryConnection">
+                Retry
+            </button>
+
+            <button
+                id="offlineDownloads"
+                class="offline-secondary"
+            >
+                Downloads
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script src="connection.js"></script>
 </body>
 
 </html>
