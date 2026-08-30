@@ -1,4 +1,37 @@
 // ========================================
+// PLAYMOVIES SERVICE WORKER
+// ========================================
+
+async function registerPlayMoviesServiceWorker() {
+    if (!("serviceWorker" in navigator)) {
+        console.log("Service Workers are not supported.");
+        return;
+    }
+
+    try {
+        const registration =
+            await navigator.serviceWorker.register(
+                "./service-worker.js",
+                {
+                    scope: "./"
+                }
+            );
+
+        console.log(
+            "PlayMovies Service Worker registered:",
+            registration.scope
+        );
+
+    } catch (error) {
+        console.error(
+            "PlayMovies Service Worker registration failed:",
+            error
+        );
+    }
+}
+
+registerPlayMoviesServiceWorker();
+// ========================================
 // PLAYMOVIES CONNECTION SYSTEM
 // ========================================
 
