@@ -1,0 +1,821 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background: #050708;
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 86px;
+    height: 100vh;
+
+    padding: 20px 13px;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1000;
+
+    background:
+        linear-gradient(
+            90deg,
+            #050708 0%,
+            rgba(5,7,8,0.98) 100%
+        );
+
+    border-right:
+        1px solid rgba(255,255,255,0.04);
+
+    transition: width 0.25s ease;
+}
+
+.sidebar:hover,
+.sidebar:focus-within {
+    width: 250px;
+}
+
+.sidebar-logo {
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    margin-bottom: 24px;
+}
+
+.sidebar-logo img {
+    width: 205px;
+    min-width: 205px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.side-link {
+    width: 100%;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #a5adb3;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.18s;
+}
+
+.side-link:hover,
+.side-link:focus-visible,
+.side-link.active {
+    background: rgba(39,229,212,0.1);
+    color: white;
+
+    outline: none;
+}
+
+.side-link.active {
+    color: #27e5d4;
+}
+
+.side-icon {
+    width: 58px;
+    min-width: 58px;
+
+    text-align: center;
+
+    font-size: 23px;
+}
+
+.side-text {
+    opacity: 0;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    transition: opacity 0.15s;
+}
+
+.sidebar:hover .side-text,
+.sidebar:focus-within .side-text {
+    opacity: 1;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+/* ==========================
+   MAIN
+========================== */
+
+.main-content {
+    margin-left: 86px;
+    padding-bottom: 80px;
+}
+
+
+/* ==========================
+   HEADER
+========================== */
+
+.movies-header {
+    padding:
+        75px
+        6%
+        38px;
+
+    background:
+        radial-gradient(
+            circle at 75% 0%,
+            rgba(39,229,212,0.13),
+            transparent 30%
+        );
+}
+
+.eyebrow {
+    margin-bottom: 11px;
+
+    color: #27e5d4;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.movies-header h1 {
+    font-size: clamp(55px, 7vw, 90px);
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+}
+
+.header-description {
+    margin-top: 20px;
+
+    color: #98a1a7;
+
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+
+/* ==========================
+   CATEGORIES
+========================== */
+
+.category-bar {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 32px;
+
+    overflow-x: auto;
+
+    padding: 5px 5px 10px;
+
+    scrollbar-width: none;
+}
+
+.category-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.category {
+    flex-shrink: 0;
+
+    padding: 13px 21px;
+
+    border:
+        1px solid rgba(255,255,255,0.1);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    color: #c3c9cd;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.18s;
+}
+
+.category:hover,
+.category:focus-visible {
+    border-color: #27e5d4;
+
+    color: white;
+
+    outline: none;
+
+    transform: scale(1.04);
+}
+
+.category.active {
+    background: #27e5d4;
+    color: #04100f;
+
+    border-color: #27e5d4;
+}
+
+
+/* ==========================
+   FEATURED MOVIE
+========================== */
+
+.featured-movie {
+    position: relative;
+
+    min-height: 480px;
+
+    margin: 10px 6% 55px;
+
+    padding: 55px;
+
+    display: flex;
+    align-items: flex-end;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at 77% 40%,
+            rgba(39,229,212,0.55),
+            transparent 13%
+        ),
+        radial-gradient(
+            circle at 77% 40%,
+            rgba(39,229,212,0.16),
+            transparent 31%
+        ),
+        linear-gradient(
+            110deg,
+            #071011 10%,
+            #0c2426 65%,
+            #071112
+        );
+}
+
+.featured-movie::before {
+    content: "";
+
+    position: absolute;
+
+    width: 390px;
+    height: 390px;
+
+    right: 9%;
+    top: 8%;
+
+    border-radius: 50%;
+
+    border:
+        2px solid rgba(39,229,212,0.2);
+
+    box-shadow:
+        0 0 100px
+        rgba(39,229,212,0.1);
+}
+
+.featured-shade {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4,7,8,0.97),
+            rgba(4,7,8,0.55) 55%,
+            rgba(4,7,8,0.05)
+        );
+}
+
+.featured-content {
+    position: relative;
+    z-index: 3;
+
+    max-width: 620px;
+}
+
+.featured-label {
+    color: #27e5d4;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.featured-content h2 {
+    margin: 10px 0 14px;
+
+    font-size: clamp(48px, 6vw, 78px);
+
+    letter-spacing: -3px;
+}
+
+.featured-meta {
+    display: flex;
+
+    gap: 9px;
+
+    margin-bottom: 17px;
+
+    color: #c4cbcf;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.featured-content p {
+    max-width: 560px;
+
+    color: #9ba4aa;
+
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* ==========================
+   FEATURED BUTTONS
+========================== */
+
+.featured-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 27px;
+}
+
+.featured-actions button {
+    height: 52px;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 0 24px;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.18s;
+}
+
+.watch-button {
+    background: #27e5d4;
+    color: #04100f;
+}
+
+.info-button,
+.list-button {
+    background: rgba(255,255,255,0.12);
+    color: white;
+}
+
+.list-button {
+    width: 52px;
+
+    padding: 0 !important;
+
+    border-radius: 50% !important;
+
+    font-size: 24px !important;
+}
+
+.featured-actions button:hover,
+.featured-actions button:focus-visible {
+    transform: scale(1.05);
+
+    outline:
+        3px solid #27e5d4;
+
+    outline-offset: 4px;
+}
+
+
+/* ==========================
+   SECTIONS
+========================== */
+
+.movie-section {
+    padding:
+        0
+        0
+        35px
+        6%;
+}
+
+.section-heading {
+    padding-right: 6%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-bottom: 5px;
+}
+
+.section-heading h2 {
+    font-size: 27px;
+}
+
+.section-heading button,
+.section-heading a {
+    border: none;
+
+    background: transparent;
+
+    color: #8d979d;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.section-heading button:hover,
+.section-heading a:hover {
+    color: #27e5d4;
+}
+
+
+/* ==========================
+   MOVIE ROW
+========================== */
+
+.movie-row {
+    display: flex;
+
+    gap: 18px;
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    padding:
+        20px
+        45px
+        32px
+        4px;
+
+    scrollbar-width: none;
+}
+
+.movie-row::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ==========================
+   MOVIE CARDS
+========================== */
+
+.movie-card {
+    position: relative;
+
+    flex:
+        0 0 360px;
+
+    height: 203px;
+
+    overflow: hidden;
+
+    border:
+        2px solid transparent;
+
+    border-radius: 10px;
+
+    color: white;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.movie-card::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.92),
+            rgba(0,0,0,0.15) 55%,
+            transparent
+        );
+}
+
+.movie-card:hover,
+.movie-card:focus-visible {
+    transform: scale(1.055);
+
+    border-color: #27e5d4;
+
+    outline: none;
+
+    box-shadow:
+        0 18px 38px rgba(0,0,0,0.55);
+
+    z-index: 10;
+}
+
+
+/* ==========================
+   CARD CONTENT
+========================== */
+
+.card-info {
+    position: absolute;
+
+    z-index: 4;
+
+    left: 17px;
+    bottom: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.card-info strong {
+    font-size: 19px;
+}
+
+.card-info span {
+    color: #bec6ca;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.badge {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 12px;
+    left: 12px;
+
+    padding: 7px 9px;
+
+    border-radius: 5px;
+
+    background: white;
+
+    color: #07100f;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.plus-badge {
+    background: #27e5d4;
+}
+
+
+/* ==========================
+   RANKING
+========================== */
+
+.ranking {
+    position: absolute;
+
+    z-index: 3;
+
+    right: 15px;
+    bottom: -20px;
+
+    font-size: 120px;
+    font-weight: 900;
+
+    color: rgba(255,255,255,0.12);
+
+    line-height: 1;
+}
+
+
+/* ==========================
+   CARD ART
+========================== */
+
+.card-one {
+    background:
+        radial-gradient(circle at 75% 30%, #28e8d7, transparent 22%),
+        linear-gradient(135deg, #071315, #13383b);
+}
+
+.card-two {
+    background:
+        radial-gradient(circle at 30% 25%, #4d7cff, transparent 22%),
+        linear-gradient(135deg, #080b17, #19254c);
+}
+
+.card-three {
+    background:
+        radial-gradient(circle at 72% 25%, #e45f40, transparent 21%),
+        linear-gradient(135deg, #170b08, #482116);
+}
+
+.card-four {
+    background:
+        radial-gradient(circle at 65% 30%, #54d4ff, transparent 22%),
+        linear-gradient(135deg, #07131a, #10354b);
+}
+
+.card-five {
+    background:
+        radial-gradient(circle at 80% 30%, #c855ff, transparent 22%),
+        linear-gradient(135deg, #120918, #351549);
+}
+
+.card-six {
+    background:
+        radial-gradient(circle at 35% 25%, #ff4141, transparent 22%),
+        linear-gradient(135deg, #170707, #481414);
+}
+
+.card-seven {
+    background:
+        radial-gradient(circle at 68% 20%, #ffe66c, transparent 18%),
+        linear-gradient(135deg, #171309, #3a3315);
+}
+
+.card-eight {
+    background:
+        linear-gradient(
+            120deg,
+            transparent 40%,
+            #ff3030 42%,
+            transparent 45%
+        ),
+        linear-gradient(135deg, #180909, #411414);
+}
+
+.card-nine {
+    background:
+        radial-gradient(circle at 72% 25%, #6595ff, transparent 20%),
+        linear-gradient(135deg, #070a13, #131f3b);
+}
+
+.card-ten {
+    background:
+        radial-gradient(circle at 70% 30%, #2dd7b4, transparent 19%),
+        linear-gradient(135deg, #06120f, #11372f);
+}
+
+
+/* ==========================
+   PLAYMOVIES+
+========================== */
+
+.plus-section {
+    margin-top: 15px;
+
+    padding-top: 32px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(39,229,212,0.04),
+            transparent 60%
+        );
+
+    border-top:
+        1px solid rgba(39,229,212,0.09);
+}
+
+.mini-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #27e5d4;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 68px;
+    }
+
+    .sidebar:hover,
+    .sidebar:focus-within {
+        width: 215px;
+    }
+
+    .main-content {
+        margin-left: 68px;
+    }
+
+    .movies-header {
+        padding:
+            55px
+            28px
+            30px;
+    }
+
+    .featured-movie {
+        margin:
+            5px
+            28px
+            45px;
+
+        padding: 35px;
+
+        min-height: 430px;
+    }
+
+    .movie-section {
+        padding-left: 28px;
+    }
+
+    .movie-card {
+        flex-basis: 295px;
+
+        height: 166px;
+    }
+
+    .featured-movie::before {
+        display: none;
+    }
+
+}
