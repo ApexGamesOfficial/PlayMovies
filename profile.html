@@ -1,602 +1,310 @@
-// ========================================
-// PLAYMOVIES + SUPABASE
-// ========================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const SUPABASE_URL =
-    "https://hweqdmphmepfycfmwblz.supabase.co";
+    <title>Profile — PlayMovies</title>
 
-const SUPABASE_KEY =
-    "sb_publishable_ir_XW-4pWIC1kFsIicGRAA_HHTKQxVS";
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
 
-const supabaseClient =
-    supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+<body>
 
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-// ========================================
-// PAGE ELEMENTS
-// ========================================
+        <div class="sidebar-logo">
+            <img src="playmovies-logo.png" alt="PlayMovies">
+        </div>
 
-const profileScreen =
-    document.getElementById("profileScreen");
+        <nav class="sidebar-nav">
 
-const loadingScreen =
-    document.getElementById("loadingScreen");
+            <a href="index.html" class="side-link">
+                <span class="side-icon">⌂</span>
+                <span class="side-text">Home</span>
+            </a>
 
-const transitionScreen =
-    document.getElementById("transitionScreen");
+            <a href="search.html" class="side-link">
+                <span class="side-icon">⌕</span>
+                <span class="side-text">Search</span>
+            </a>
 
-const addProfileButton =
-    document.getElementById("addProfileButton");
+            <a href="movies.html" class="side-link text-only">
+                <span class="side-text">Movies</span>
+            </a>
 
-const manageProfilesButton =
-    document.getElementById("manageProfilesButton");
+            <a href="tvshows.html" class="side-link text-only">
+                <span class="side-text">TV Shows</span>
+            </a>
 
-let transitionStarted = false;
+            <a href="mylist.html" class="side-link">
+                <span class="side-icon">+</span>
+                <span class="side-text">My List</span>
+            </a>
 
+            <a href="subscriptions.html" class="side-link">
+                <span class="side-icon">★</span>
+                <span class="side-text">Subscriptions</span>
+            </a>
 
-// ========================================
-// LOAD LOGGED-IN ACCOUNT
-// ========================================
+            <a href="profile.html" class="side-link active">
+                <span class="side-icon">●</span>
+                <span class="side-text">Profile</span>
+            </a>
 
-async function loadAccount() {
+            <a href="settings.html" class="side-link text-only">
+                <span class="side-text">Settings</span>
+            </a>
 
-    try {
+        </nav>
 
-        const {
-            data: { user },
-            error
-        } =
-            await supabaseClient.auth.getUser();
+    </aside>
 
 
-        if (error || !user) {
+    <!-- MAIN CONTENT -->
+    <main class="profile-page">
 
-            // Nobody is logged in.
-            // Send them back to login.
+        <section class="profile-header">
 
-            window.location.href =
-                "login.html";
+            <p class="profile-eyebrow">
+                PLAYMOVIES ACCOUNT
+            </p>
 
-            return;
-        }
+            <h1>Profile</h1>
 
+            <p>
+                Manage your PlayMovies profile and account.
+            </p>
 
-        const metadata =
-            user.user_metadata || {};
+        </section>
 
 
-        const displayName =
-            metadata.display_name ||
-            metadata.first_name ||
-            "Profile";
+        <!-- ACCOUNT HERO -->
+        <section class="account-hero">
 
+            <div
+                class="large-profile-avatar"
+                id="profileAvatar"
+            >
+                P
+            </div>
 
-        const firstName =
-            metadata.first_name ||
-            displayName;
+            <div class="profile-identity">
 
+                <span class="profile-label">
+                    ACTIVE PROFILE
+                </span>
 
-        // --------------------------------
-        // CHANGE FIRST PROFILE
-        // --------------------------------
+                <h2 id="profileDisplayName">
+                    Loading...
+                </h2>
 
-        const firstProfile =
-            document.querySelector(
-                '.profile-card[data-profile="Alex"]'
-            );
+                <p id="profileEmail">
+                    Loading account...
+                </p>
 
+            </div>
 
-        if (firstProfile) {
+            <button
+                class="switch-profile-button"
+                id="switchProfileButton"
+            >
+                Switch Profile
+            </button>
 
-            firstProfile.dataset.profile =
-                displayName;
+        </section>
 
 
-            const profileName =
-                firstProfile.querySelector(
-                    ".profile-name"
-                );
+        <!-- ACCOUNT GRID -->
+        <section class="profile-grid">
 
+            <article class="profile-panel">
 
-            if (profileName) {
+                <div class="panel-heading">
 
-                profileName.textContent =
-                    displayName;
+                    <div>
+                        <span class="panel-label">
+                            ACCOUNT
+                        </span>
 
-            }
+                        <h3>Account Details</h3>
+                    </div>
 
+                </div>
 
-            const avatar =
-                firstProfile.querySelector(
-                    ".profile-avatar"
-                );
 
+                <div class="detail-row">
 
-            if (avatar) {
+                    <span>Name</span>
 
-                avatar.textContent =
-                    displayName
-                        .charAt(0)
-                        .toUpperCase();
+                    <strong id="accountFullName">
+                        —
+                    </strong>
 
-            }
+                </div>
 
-        }
 
+                <div class="detail-row">
 
-        // --------------------------------
-        // WELCOME MESSAGE
-        // --------------------------------
+                    <span>Email</span>
 
-        const welcomeText =
-            document.querySelector(
-                ".welcome-text"
-            );
+                    <strong id="accountEmail">
+                        —
+                    </strong>
 
+                </div>
 
-        if (welcomeText) {
 
-            welcomeText.textContent =
-                `WELCOME BACK, ${firstName.toUpperCase()}`;
+                <div class="detail-row">
 
-        }
+                    <span>Display Name</span>
 
+                    <strong id="accountDisplayName">
+                        —
+                    </strong>
 
-        // Store basic account information
-        // for other PlayMovies pages.
+                </div>
 
-        localStorage.setItem(
-            "playmoviesAccountName",
-            displayName
-        );
+            </article>
 
 
-        localStorage.setItem(
-            "playmoviesAccountEmail",
-            user.email || ""
-        );
+            <article class="profile-panel">
 
+                <div class="panel-heading">
 
-        // Now that the account is loaded,
-        // activate the profile buttons.
+                    <div>
+                        <span class="panel-label">
+                            MEMBERSHIP
+                        </span>
 
-        setupProfileSelection();
+                        <h3>Your Plan</h3>
+                    </div>
 
-    }
+                </div>
 
-    catch (error) {
 
-        console.error(
-            "Could not load PlayMovies account:",
-            error
-        );
+                <div class="plan-display">
 
-        window.location.href =
-            "login.html";
+                    <div>
 
-    }
+                        <span class="current-plan-label">
+                            CURRENT PLAN
+                        </span>
 
-}
+                        <strong id="currentPlan">
+                            Free
+                        </strong>
 
+                    </div>
 
-// ========================================
-// PROFILE SELECTION
-// ========================================
+                    <a
+                        href="subscriptions.html"
+                        class="manage-plan-button"
+                    >
+                        View Plans
+                    </a>
 
-function setupProfileSelection() {
+                </div>
 
-    const profileCards =
-        document.querySelectorAll(
-            ".profile-card"
-        );
 
+                <p class="plan-description">
+                    Upgrade your PlayMovies experience
+                    with additional streaming benefits.
+                </p>
 
-    profileCards.forEach((card) => {
+            </article>
 
-        card.addEventListener(
-            "click",
-            () => {
 
-                if (transitionStarted) {
-                    return;
-                }
+            <article class="profile-panel">
 
+                <div class="panel-heading">
 
-                if (
-                    card.id ===
-                    "addProfileButton"
-                ) {
+                    <div>
+                        <span class="panel-label">
+                            PROFILES
+                        </span>
 
-                    return;
+                        <h3>Manage Profiles</h3>
+                    </div>
 
-                }
+                </div>
 
+                <p class="panel-description">
+                    Create and manage viewer profiles
+                    connected to this PlayMovies account.
+                </p>
 
-                const profileName =
-                    card.dataset.profile ||
-                    "Profile";
+                <button
+                    class="secondary-button"
+                    id="manageProfilesButton"
+                >
+                    Manage Profiles
+                </button>
 
+            </article>
 
-                selectProfile(
-                    profileName
-                );
 
-            }
-        );
+            <article class="profile-panel">
 
-    });
+                <div class="panel-heading">
 
-}
+                    <div>
+                        <span class="panel-label">
+                            PURCHASES
+                        </span>
 
+                        <h3>Purchase History</h3>
+                    </div>
 
-function selectProfile(profileName) {
+                </div>
 
-    transitionStarted = true;
+                <p class="panel-description">
+                    Movies and shows you rent or buy
+                    will appear here.
+                </p>
 
+                <button
+                    class="secondary-button"
+                    id="purchaseHistoryButton"
+                >
+                    View Purchase History
+                </button>
 
-    localStorage.setItem(
-        "playmoviesActiveProfile",
-        profileName
-    );
+            </article>
 
+        </section>
 
-    profileScreen.classList.add(
-        "fade-out"
-    );
 
+        <!-- SIGN OUT -->
+        <section class="account-actions">
 
-    setTimeout(() => {
+            <div>
 
-        showLoadingScreen();
+                <h3>Sign Out</h3>
 
-    }, 300);
+                <p>
+                    Sign out of your PlayMovies account
+                    on this device.
+                </p>
 
-}
+            </div>
 
+            <button
+                class="sign-out-button"
+                id="signOutButton"
+            >
+                Sign Out
+            </button>
 
-// ========================================
-// LOADING SCREEN
-// ========================================
+        </section>
 
-function showLoadingScreen() {
+    </main>
 
-    loadingScreen.classList.add(
-        "show"
-    );
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="profile.js"></script>
 
-    loadingScreen.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-
-    setTimeout(() => {
-
-        startClapperTransition();
-
-    }, 1800);
-
-}
-
-
-// ========================================
-// CLAPPER TRANSITION
-// ========================================
-
-function startClapperTransition() {
-
-    loadingScreen.classList.remove(
-        "show"
-    );
-
-
-    loadingScreen.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-
-    transitionScreen.classList.add(
-        "show",
-        "play"
-    );
-
-
-    transitionScreen.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-
-    setTimeout(() => {
-
-        playClapperSound();
-
-    }, 900);
-
-
-    setTimeout(() => {
-
-        window.location.href =
-            "index.html";
-
-    }, 2450);
-
-}
-
-
-// ========================================
-// CLAPPER SOUND
-// ========================================
-
-function playClapperSound() {
-
-    try {
-
-        const AudioContext =
-            window.AudioContext ||
-            window.webkitAudioContext;
-
-
-        if (!AudioContext) {
-            return;
-        }
-
-
-        const audioContext =
-            new AudioContext();
-
-
-        const oscillator =
-            audioContext.createOscillator();
-
-
-        const gain =
-            audioContext.createGain();
-
-
-        oscillator.type =
-            "square";
-
-
-        oscillator.frequency.setValueAtTime(
-            150,
-            audioContext.currentTime
-        );
-
-
-        oscillator.frequency
-            .exponentialRampToValueAtTime(
-                65,
-                audioContext.currentTime + 0.08
-            );
-
-
-        gain.gain.setValueAtTime(
-            0.12,
-            audioContext.currentTime
-        );
-
-
-        gain.gain
-            .exponentialRampToValueAtTime(
-                0.001,
-                audioContext.currentTime + 0.10
-            );
-
-
-        oscillator.connect(
-            gain
-        );
-
-
-        gain.connect(
-            audioContext.destination
-        );
-
-
-        oscillator.start();
-
-
-        oscillator.stop(
-            audioContext.currentTime + 0.10
-        );
-
-
-        setTimeout(() => {
-
-            audioContext.close();
-
-        }, 250);
-
-    }
-
-    catch (error) {
-
-        console.log(
-            "PlayMovies clapper sound unavailable."
-        );
-
-    }
-
-}
-
-
-// ========================================
-// ADD PROFILE
-// ========================================
-
-if (addProfileButton) {
-
-    addProfileButton.addEventListener(
-        "click",
-        (event) => {
-
-            event.stopPropagation();
-
-
-            alert(
-                "Add Profile is coming next."
-            );
-
-        }
-    );
-
-}
-
-
-// ========================================
-// MANAGE PROFILES
-// ========================================
-
-if (manageProfilesButton) {
-
-    manageProfilesButton.addEventListener(
-        "click",
-        () => {
-
-            alert(
-                "Manage Profiles is coming soon."
-            );
-
-        }
-    );
-
-}
-
-
-// ========================================
-// KEYBOARD / TV REMOTE NAVIGATION
-// ========================================
-
-const selectableProfiles =
-    Array.from(
-        document.querySelectorAll(
-            ".profile-card"
-        )
-    );
-
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        const active =
-            document.activeElement;
-
-
-        const currentIndex =
-            selectableProfiles.indexOf(
-                active
-            );
-
-
-        if (
-            event.key === "ArrowRight" &&
-            currentIndex !== -1
-        ) {
-
-            event.preventDefault();
-
-
-            const nextIndex =
-                Math.min(
-                    currentIndex + 1,
-                    selectableProfiles.length - 1
-                );
-
-
-            selectableProfiles[
-                nextIndex
-            ].focus();
-
-        }
-
-
-        if (
-            event.key === "ArrowLeft" &&
-            currentIndex !== -1
-        ) {
-
-            event.preventDefault();
-
-
-            const previousIndex =
-                Math.max(
-                    currentIndex - 1,
-                    0
-                );
-
-
-            selectableProfiles[
-                previousIndex
-            ].focus();
-
-        }
-
-
-        if (
-            event.key === "ArrowDown" &&
-            currentIndex !== -1
-        ) {
-
-            event.preventDefault();
-
-
-            manageProfilesButton.focus();
-
-        }
-
-
-        if (
-            event.key === "ArrowUp" &&
-            active === manageProfilesButton
-        ) {
-
-            event.preventDefault();
-
-
-            selectableProfiles[0].focus();
-
-        }
-
-
-        if (
-            event.key === "Escape" &&
-            !transitionStarted
-        ) {
-
-            window.location.href =
-                "welcome.html";
-
-        }
-
-    }
-);
-
-
-// ========================================
-// START PLAYMOVIES
-// ========================================
-
-window.addEventListener(
-    "load",
-    async () => {
-
-        await loadAccount();
-
-
-        if (
-            selectableProfiles.length > 0
-        ) {
-
-            selectableProfiles[0].focus();
-
-        }
-
-    }
-);
+</body>
+</html>
