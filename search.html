@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search — PlayMovies</title>
+
+    <link rel="stylesheet" href="search.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <a href="index.html" class="sidebar-logo">
+            <img src="playmovies-logo.png" alt="PlayMovies">
+        </a>
+
+        <nav class="sidebar-nav">
+
+            <a href="index.html" class="side-link">
+                <span class="side-icon">⌂</span>
+                <span class="side-text">Home</span>
+            </a>
+
+            <a href="search.html" class="side-link active">
+                <span class="side-icon">⌕</span>
+                <span class="side-text">Search</span>
+            </a>
+
+            <a href="movies.html" class="side-link">
+                <span class="side-icon">🎬</span>
+                <span class="side-text">Movies</span>
+            </a>
+
+            <a href="#" class="side-link">
+                <span class="side-icon">▣</span>
+                <span class="side-text">TV Shows</span>
+            </a>
+
+            <a href="#" class="side-link">
+                <span class="side-icon">＋</span>
+                <span class="side-text">My List</span>
+            </a>
+
+            <a href="#" class="side-link">
+                <span class="side-icon">🛍</span>
+                <span class="side-text">Store</span>
+            </a>
+
+            <a href="subscriptions.html" class="side-link">
+                <span class="side-icon">★</span>
+                <span class="side-text">Subscriptions</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="side-link">
+                <span class="side-icon">●</span>
+                <span class="side-text">Profile</span>
+            </a>
+
+            <a href="#" class="side-link">
+                <span class="side-icon">⚙</span>
+                <span class="side-text">Settings</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main-content">
+
+        <section class="search-header">
+
+            <p class="eyebrow">
+                FIND SOMETHING TO WATCH
+            </p>
+
+            <h1>Search</h1>
+
+            <div class="search-container">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search movies, TV shows, genres..."
+                    autocomplete="off"
+                    autofocus
+                >
+
+                <button
+                    id="clearSearch"
+                    class="clear-search"
+                    type="button"
+                    aria-label="Clear search"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div class="quick-search">
+
+                <button
+                    class="quick-button active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="quick-button"
+                    data-filter="action"
+                >
+                    Action
+                </button>
+
+                <button
+                    class="quick-button"
+                    data-filter="sci-fi"
+                >
+                    Sci-Fi
+                </button>
+
+                <button
+                    class="quick-button"
+                    data-filter="adventure"
+                >
+                    Adventure
+                </button>
+
+                <button
+                    class="quick-button"
+                    data-filter="drama"
+                >
+                    Drama
+                </button>
+
+                <button
+                    class="quick-button"
+                    data-filter="family"
+                >
+                    Family
+                </button>
+
+                <button
+                    class="quick-button"
+                    data-filter="playmovies+"
+                >
+                    PlayMovies+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RESULTS
+        ========================== -->
+
+        <section class="results-section">
+
+            <div class="results-heading">
+
+                <div>
+                    <p class="results-label">
+                        RESULTS
+                    </p>
+
+                    <h2 id="resultsTitle">
+                        Explore PlayMovies
+                    </h2>
+                </div>
+
+                <span id="resultCount">
+                    12 titles
+                </span>
+
+            </div>
+
+
+            <div class="results-grid" id="resultsGrid">
+
+
+                <!-- NEON RUN -->
+
+                <button
+                    class="result-card card-one"
+                    data-title="Neon Run"
+                    data-year="2026"
+                    data-rating="PG-13"
+                    data-genre="action sci-fi"
+                    data-service="rent buy"
+                >
+
+                    <span class="result-badge">
+                        MOVIE
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Neon Run</strong>
+
+                        <span>
+                            2026 • PG-13 • Action
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- AFTERLIGHT -->
+
+                <button
+                    class="result-card card-two"
+                    data-title="Afterlight"
+                    data-year="2026"
+                    data-rating="TV-14"
+                    data-genre="drama sci-fi"
+                    data-service="playmovies+"
+                >
+
+                    <span class="result-badge plus-badge">
+                        PLAYMOVIES+
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Afterlight</strong>
+
+                        <span>
+                            2026 • TV-14 • Sci-Fi
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- LAST SIGNAL -->
+
+                <button
+                    class="result-card card-three"
+                    data-title="The Last Signal"
+                    data-year="2025"
+                    data-rating="PG-13"
+                    data-genre="sci-fi drama"
+                    data-service="rent buy"
+                >
+
+                    <span class="result-badge">
+                        MOVIE
+                    </span>
+
+                    <div class="card-info">
+                        <strong>The Last Signal</strong>
+
+                        <span>
+                            2025 • PG-13 • Sci-Fi
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- DEEP HORIZON -->
+
+                <button
+                    class="result-card card-four"
+                    data-title="Deep Horizon"
+                    data-year="2026"
+                    data-rating="PG"
+                    data-genre="adventure family"
+                    data-service="rent buy"
+                >
+
+                    <span class="result-badge">
+                        MOVIE
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Deep Horizon</strong>
+
+                        <span>
+                            2026 • PG • Adventure
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- STATIC CITY -->
+
+                <button
+                    class="result-card card-five"
+                    data-title="Static City"
+                    data-year="2025"
+                    data-rating="TV-14"
+                    data-genre="drama"
+                    data-service="playmovies+"
+                >
+
+                    <span class="result-badge plus-badge">
+                        PLAYMOVIES+
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Static City</strong>
+
+                        <span>
+                            2025 • TV-14 • Drama
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- ZERO HOUR -->
+
+                <button
+                    class="result-card card-six"
+                    data-title="Zero Hour"
+                    data-year="2026"
+                    data-rating="PG-13"
+                    data-genre="action"
+                    data-service="playmovies+"
+                >
+
+                    <span class="result-badge plus-badge">
+                        PLAYMOVIES+
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Zero Hour</strong>
+
+                        <span>
+                            2026 • PG-13 • Action
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- STARFALL -->
+
+                <button
+                    class="result-card card-seven"
+                    data-title="Starfall"
+                    data-year="2026"
+                    data-rating="PG"
+                    data-genre="family adventure sci-fi"
+                    data-service="rent buy"
+                >
+
+                    <span class="result-badge">
+                        MOVIE
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Starfall</strong>
+
+                        <span>
+                            2026 • PG • Adventure
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- REDLINE -->
+
+                <button
+                    class="result-card card-eight"
+                    data-title="Redline"
+                    data-year="2026"
+                    data-rating="PG-13"
+                    data-genre="action"
+                    data-service="rent buy"
+                >
+
+                    <span class="result-badge">
+                        MOVIE
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Redline</strong>
+
+                        <span>
+                            2026 • PG-13 • Action
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- NIGHT SHIFT -->
+
+                <button
+                    class="result-card card-nine"
+                    data-title="Night Shift"
+                    data-year="2026"
+                    data-rating="TV-14"
+                    data-genre="drama"
+                    data-service="playmovies+"
+                >
+
+                    <span class="result-badge plus-badge">
+                        PLAYMOVIES+
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Night Shift</strong>
+
+                        <span>
+                            2026 • TV-14 • Drama
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- BEYOND EARTH -->
+
+                <button
+                    class="result-card card-ten"
+                    data-title="Beyond Earth"
+                    data-year="2026"
+                    data-rating="PG"
+                    data-genre="sci-fi adventure family"
+                    data-service="playmovies+"
+                >
+
+                    <span class="result-badge plus-badge">
+                        PLAYMOVIES+
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Beyond Earth</strong>
+
+                        <span>
+                            2026 • PG • Sci-Fi
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- QUANTUM EDGE -->
+
+                <button
+                    class="result-card card-eleven"
+                    data-title="Quantum Edge"
+                    data-year="2026"
+                    data-rating="PG-13"
+                    data-genre="action sci-fi"
+                    data-service="rent buy"
+                >
+
+                    <span class="result-badge">
+                        MOVIE
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Quantum Edge</strong>
+
+                        <span>
+                            2026 • PG-13 • Sci-Fi
+                        </span>
+                    </div>
+
+                </button>
+
+
+                <!-- WILD SKIES -->
+
+                <button
+                    class="result-card card-twelve"
+                    data-title="Wild Skies"
+                    data-year="2025"
+                    data-rating="PG"
+                    data-genre="family adventure"
+                    data-service="playmovies+"
+                >
+
+                    <span class="result-badge plus-badge">
+                        PLAYMOVIES+
+                    </span>
+
+                    <div class="card-info">
+                        <strong>Wild Skies</strong>
+
+                        <span>
+                            2025 • PG • Family
+                        </span>
+                    </div>
+
+                </button>
+
+            </div>
+
+
+            <!-- NO RESULTS -->
+
+            <div
+                class="no-results"
+                id="noResults"
+            >
+
+                <div class="no-results-icon">
+                    ⌕
+                </div>
+
+                <h2>No titles found</h2>
+
+                <p>
+                    Try searching for another title,
+                    genre, year, or rating.
+                </p>
+
+                <button id="resetSearch">
+                    Clear Search
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="search.js"></script>
+
+</body>
+</html>
