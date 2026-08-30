@@ -1,83 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>PlayMovies — Movies Anywhere, Everywhere</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+    <aside class="sidebar" id="sidebar">
 
-    <header class="navbar">
-
-        <a href="index.html" class="logo">
+        <a href="index.html" class="sidebar-logo">
             <img src="playmovies-logo.png" alt="PlayMovies">
         </a>
 
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">TV Shows</a>
-            <a href="#">My List</a>
-        </nav>
+        <nav class="sidebar-nav">
 
-        <div class="nav-right">
-
-            <button class="search-button">
-                Search
-            </button>
-
-            <a href="#" class="sign-in">
-                Sign In
+            <a href="#" class="side-link active">
+                <span class="side-icon">⌂</span>
+                <span class="side-text">Home</span>
             </a>
 
-            <a href="#" class="create-account">
-                Create Account
+            <button class="side-link" id="searchButton">
+                <span class="side-icon">⌕</span>
+                <span class="side-text">Search</span>
+            </button>
+
+            <a href="#" class="side-link">
+                <span class="side-icon">🎬</span>
+                <span class="side-text">Movies</span>
+            </a>
+
+            <a href="#" class="side-link">
+                <span class="side-icon">▣</span>
+                <span class="side-text">TV Shows</span>
+            </a>
+
+            <a href="#" class="side-link">
+                <span class="side-icon">＋</span>
+                <span class="side-text">My List</span>
+            </a>
+
+            <a href="#" class="side-link">
+                <span class="side-icon">🛍</span>
+                <span class="side-text">Store</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="side-link">
+                <span class="side-icon">●</span>
+                <span class="side-text">Profile</span>
+            </a>
+
+            <a href="#" class="side-link">
+                <span class="side-icon">⚙</span>
+                <span class="side-text">Settings</span>
             </a>
 
         </div>
 
-    </header>
+    </aside>
 
 
-    <!-- FEATURED MOVIE -->
-
-    <main>
+    <main class="main-content">
 
         <section class="hero">
 
+            <div class="hero-overlay"></div>
+
             <div class="hero-content">
 
-                <p class="featured-label">
-                    PLAYMOVIES FEATURED
-                </p>
+                <p class="featured-label">PLAYMOVIES FEATURED</p>
 
                 <h1>Featured Movie</h1>
 
-                <p class="movie-info">
-                    PG-13 &nbsp; • &nbsp; 2026 &nbsp; • &nbsp; 2h 8m
+                <p class="movie-meta">
+                    PG-13
+                    <span>•</span>
+                    2026
+                    <span>•</span>
+                    2h 8m
                 </p>
 
-                <p class="movie-description">
-                    Your featured movies will appear here.
-                    Discover new stories, build your watchlist,
-                    and watch anywhere.
+                <p class="hero-description">
+                    Discover new stories, popular favorites, and unforgettable
+                    movies from anywhere with PlayMovies.
                 </p>
 
-                <div class="hero-buttons">
+                <div class="hero-actions">
 
-                    <button class="watch-button">
+                    <button class="primary-action">
                         ▶ Watch Now
                     </button>
 
-                    <button class="info-button">
+                    <button class="secondary-action">
                         More Info
+                    </button>
+
+                    <button class="circle-action">
+                        +
                     </button>
 
                 </div>
@@ -87,113 +112,133 @@
         </section>
 
 
-        <!-- TRENDING -->
+        <section class="content-row">
 
-       <section class="movie-section">
+            <h2>Continue Watching</h2>
 
-    <h2>Trending Now</h2>
+            <div class="movie-row">
 
-    <div class="movie-row">
+                <button class="movie-card card-one">
+                    <div class="card-content">
+                        <span class="movie-title">Neon Run</span>
+                        <span class="movie-details">48 min remaining</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-fill progress-60"></div>
+                    </div>
+                </button>
 
-        <button class="movie-card card-one">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">Neon Run</span>
-                <span class="movie-card-meta">2026 • PG-13</span>
+                <button class="movie-card card-two">
+                    <div class="card-content">
+                        <span class="movie-title">Afterlight</span>
+                        <span class="movie-details">1h 12m remaining</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-fill progress-35"></div>
+                    </div>
+                </button>
+
+                <button class="movie-card card-three">
+                    <div class="card-content">
+                        <span class="movie-title">The Last Signal</span>
+                        <span class="movie-details">29 min remaining</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-fill progress-75"></div>
+                    </div>
+                </button>
+
             </div>
-        </button>
 
-        <button class="movie-card card-two">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">Afterlight</span>
-                <span class="movie-card-meta">2026 • TV-14</span>
+        </section>
+
+
+        <section class="content-row">
+
+            <h2>Trending Now</h2>
+
+            <div class="movie-row">
+
+                <button class="movie-card card-one">
+                    <div class="card-content">
+                        <span class="movie-title">Neon Run</span>
+                        <span class="movie-details">2026 • PG-13</span>
+                    </div>
+                </button>
+
+                <button class="movie-card card-two">
+                    <div class="card-content">
+                        <span class="movie-title">Afterlight</span>
+                        <span class="movie-details">2026 • TV-14</span>
+                    </div>
+                </button>
+
+                <button class="movie-card card-three">
+                    <div class="card-content">
+                        <span class="movie-title">The Last Signal</span>
+                        <span class="movie-details">2025 • PG-13</span>
+                    </div>
+                </button>
+
+                <button class="movie-card card-four">
+                    <div class="card-content">
+                        <span class="movie-title">Deep Horizon</span>
+                        <span class="movie-details">2026 • PG</span>
+                    </div>
+                </button>
+
+                <button class="movie-card card-five">
+                    <div class="card-content">
+                        <span class="movie-title">Static City</span>
+                        <span class="movie-details">2025 • TV-14</span>
+                    </div>
+                </button>
+
             </div>
-        </button>
 
-        <button class="movie-card card-three">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">The Last Signal</span>
-                <span class="movie-card-meta">2025 • PG-13</span>
-            </div>
-        </button>
+        </section>
 
-        <button class="movie-card card-four">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">Deep Horizon</span>
-                <span class="movie-card-meta">2026 • PG</span>
-            </div>
-        </button>
 
-        <button class="movie-card card-five">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">Static City</span>
-                <span class="movie-card-meta">2025 • TV-14</span>
-            </div>
-        </button>
+        <section class="content-row">
 
-    </div>
+            <h2>New Releases</h2>
 
-</section>
+            <div class="movie-row">
 
-        <!-- NEW RELEASES -->
+                <button class="movie-card card-six">
+                    <div class="card-content">
+                        <span class="movie-title">Zero Hour</span>
+                        <span class="movie-details">2026 • PG-13</span>
+                    </div>
+                </button>
 
-       <section class="movie-section">
+                <button class="movie-card card-seven">
+                    <div class="card-content">
+                        <span class="movie-title">Starfall</span>
+                        <span class="movie-details">2026 • PG</span>
+                    </div>
+                </button>
 
-    <h2>New Releases</h2>
+                <button class="movie-card card-eight">
+                    <div class="card-content">
+                        <span class="movie-title">Redline</span>
+                        <span class="movie-details">2026 • PG-13</span>
+                    </div>
+                </button>
 
-    <div class="movie-row">
+                <button class="movie-card card-nine">
+                    <div class="card-content">
+                        <span class="movie-title">Night Shift</span>
+                        <span class="movie-details">2026 • TV-14</span>
+                    </div>
+                </button>
 
-        <button class="movie-card card-six">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">Zero Hour</span>
-                <span class="movie-card-meta">2026 • PG-13</span>
-            </div>
-        </button>
-
-        <button class="movie-card card-seven">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">Starfall</span>
-                <span class="movie-card-meta">2026 • PG</span>
-            </div>
-        </button>
-
-        <button class="movie-card card-eight">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">Redline</span>
-                <span class="movie-card-meta">2026 • PG-13</span>
-            </div>
-        </button>
-
-        <button class="movie-card card-nine">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">Night Shift</span>
-                <span class="movie-card-meta">2026 • TV-14</span>
-            </div>
-        </button>
-
-        <button class="movie-card card-ten">
-            <div class="movie-card-overlay">
-                <span class="movie-card-title">Beyond Earth</span>
-                <span class="movie-card-meta">2026 • PG</span>
-            </div>
-        </button>
-
-    </div>
-
-</section>
-
-        <!-- MY LIST -->
-
-        <section class="movie-section">
-
-            <h2>My List</h2>
-
-            <div class="empty-list">
-
-                <h3>Your list is waiting.</h3>
-
-                <p>
-                    Add movies and shows you want to watch later.
-                </p>
+                <button class="movie-card card-ten">
+                    <div class="card-content">
+                        <span class="movie-title">Beyond Earth</span>
+                        <span class="movie-details">2026 • PG</span>
+                    </div>
+                </button>
 
             </div>
 
@@ -202,8 +247,26 @@
     </main>
 
 
+    <div class="search-panel" id="searchPanel">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                placeholder="Search movies and TV shows..."
+                id="searchInput"
+            >
+
+            <button id="closeSearch">
+                ✕
+            </button>
+
+        </div>
+
+    </div>
+
+
     <script src="script.js"></script>
 
 </body>
-
 </html>
