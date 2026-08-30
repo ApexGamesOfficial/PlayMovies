@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My List — PlayMovies</title>
+    <link rel="stylesheet" href="mylist.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <a href="index.html" class="sidebar-logo">
+            <img src="playmovies-logo.png" alt="PlayMovies">
+        </a>
+
+        <nav class="sidebar-nav">
+
+            <a href="index.html" class="side-link">
+                <span class="side-icon">⌂</span>
+                <span class="side-text">Home</span>
+            </a>
+
+            <a href="search.html" class="side-link">
+                <span class="side-icon">⌕</span>
+                <span class="side-text">Search</span>
+            </a>
+
+            <a href="movies.html" class="side-link text-only">
+                <span class="side-text">Movies</span>
+            </a>
+
+            <a href="tvshows.html" class="side-link text-only">
+                <span class="side-text">TV Shows</span>
+            </a>
+
+            <a href="mylist.html" class="side-link active">
+                <span class="side-icon">＋</span>
+                <span class="side-text">My List</span>
+            </a>
+
+            <a href="#" class="side-link text-only">
+                <span class="side-text">Store</span>
+            </a>
+
+            <a href="subscriptions.html" class="side-link">
+                <span class="side-icon">★</span>
+                <span class="side-text">Subscriptions</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#" class="side-link">
+                <span class="side-icon">●</span>
+                <span class="side-text">Profile</span>
+            </a>
+
+            <a href="#" class="side-link text-only">
+                <span class="side-text">Settings</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <section class="page-header">
+
+            <p class="eyebrow">
+                YOUR PLAYMOVIES LIBRARY
+            </p>
+
+            <h1>My List</h1>
+
+            <p class="header-description">
+                Save movies and TV shows to watch later.
+            </p>
+
+
+            <div class="filter-bar">
+
+                <button
+                    class="filter-button active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="movie"
+                >
+                    Movies
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="show"
+                >
+                    TV Shows
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SAVED TITLES -->
+        <section class="list-section">
+
+            <div class="list-heading">
+
+                <div>
+                    <p class="mini-label">SAVED TITLES</p>
+                    <h2>Your List</h2>
+                </div>
+
+                <span id="savedCount">
+                    0 titles
+                </span>
+
+            </div>
+
+
+            <div
+                id="savedGrid"
+                class="saved-grid"
+            ></div>
+
+
+            <!-- EMPTY STATE -->
+            <div
+                id="emptyState"
+                class="empty-state"
+            >
+
+                <div class="empty-icon">
+                    ＋
+                </div>
+
+                <h2>Your list is empty</h2>
+
+                <p>
+                    Add movies and TV shows to keep
+                    everything you want to watch in one place.
+                </p>
+
+                <div class="empty-actions">
+
+                    <a href="movies.html">
+                        Browse Movies
+                    </a>
+
+                    <a href="tvshows.html">
+                        Browse TV Shows
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="mylist.js"></script>
+
+</body>
+</html>
