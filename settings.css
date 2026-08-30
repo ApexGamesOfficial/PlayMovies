@@ -1,397 +1,453 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+.settings-page {
+    margin-left: 86px;
+    min-height: 100vh;
 
-    <title>Settings — PlayMovies</title>
+    padding:
+        70px
+        clamp(28px, 5vw, 80px)
+        90px;
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="settings.css">
-</head>
+    background:
+        radial-gradient(
+            circle at 75% 10%,
+            rgba(39,229,212,0.09),
+            transparent 28%
+        ),
+        #050708;
+}
 
-<body>
 
-    <aside class="sidebar">
+.settings-header {
+    max-width: 900px;
+    margin-bottom: 42px;
+}
 
-        <div class="sidebar-logo">
-            <img src="playmovies-logo.png" alt="PlayMovies">
-        </div>
 
-        <nav class="sidebar-nav">
+.settings-eyebrow,
+.panel-label {
+    color: #27e5d4;
 
-            <a href="index.html" class="side-link">
-                <span class="side-icon">⌂</span>
-                <span class="side-text">Home</span>
-            </a>
+    font-size: 11px;
+    font-weight: 900;
 
-            <a href="search.html" class="side-link">
-                <span class="side-icon">⌕</span>
-                <span class="side-text">Search</span>
-            </a>
+    letter-spacing: 2px;
+}
 
-            <a href="movies.html" class="side-link text-only">
-                <span class="side-text">Movies</span>
-            </a>
 
-            <a href="tvshows.html" class="side-link text-only">
-                <span class="side-text">TV Shows</span>
-            </a>
+.settings-header h1 {
+    margin: 8px 0 10px;
 
-            <a href="mylist.html" class="side-link">
-                <span class="side-icon">+</span>
-                <span class="side-text">My List</span>
-            </a>
+    font-size:
+        clamp(42px, 6vw, 72px);
 
-            <a href="subscriptions.html" class="side-link">
-                <span class="side-icon">★</span>
-                <span class="side-text">Subscriptions</span>
-            </a>
+    letter-spacing: -3px;
+}
 
-        </nav>
 
-        <div class="sidebar-bottom">
+.settings-header > p:last-child {
+    color: #8f999f;
+    font-size: 16px;
+}
 
-            <a href="profile.html" class="side-link">
-                <span class="side-icon"></span>
-                <span class="side-text">Profile</span>
-            </a>
 
-            <a href="settings.html" class="side-link text-only active">
-                <span class="side-text">Settings</span>
-            </a>
+.settings-grid {
+    display: grid;
 
-        </div>
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
 
-    </aside>
+    gap: 20px;
 
+    max-width: 1150px;
+}
 
-    <main class="settings-page">
 
-        <header class="settings-header">
+.settings-panel {
+    padding: 28px;
 
-            <p class="settings-eyebrow">
-                PLAYMOVIES
-            </p>
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
 
-            <h1>Settings</h1>
+    border-radius: 16px;
 
-            <p>
-                Customize how PlayMovies works for you.
-            </p>
+    background:
+        rgba(255,255,255,0.028);
+}
 
-        </header>
 
+.panel-header {
+    margin-bottom: 20px;
+}
 
-        <section class="settings-grid">
 
-            <!-- PLAYBACK -->
+.panel-header h2 {
+    margin-top: 7px;
+    font-size: 23px;
+}
 
-            <article class="settings-panel">
 
-                <div class="panel-header">
-                    <span class="panel-label">PLAYBACK</span>
-                    <h2>Playback</h2>
-                </div>
+.setting-row,
+.setting-select-row {
 
+    display: flex;
 
-                <div class="setting-row">
+    align-items: center;
 
-                    <div>
-                        <h3>Autoplay Next Episode</h3>
+    justify-content: space-between;
 
-                        <p>
-                            Automatically start the next episode.
-                        </p>
-                    </div>
+    gap: 25px;
 
-                    <label class="switch">
+    padding: 21px 0;
 
-                        <input
-                            type="checkbox"
-                            id="autoplayNext"
-                        >
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+}
 
-                        <span class="slider"></span>
 
-                    </label>
+.setting-row:last-child,
+.setting-select-row:last-child {
+    border-bottom: none;
+}
 
-                </div>
 
+.setting-row h3,
+.setting-select-row h3 {
 
-                <div class="setting-row">
+    margin-bottom: 6px;
 
-                    <div>
+    font-size: 15px;
+}
 
-                        <h3>Autoplay Previews</h3>
 
-                        <p>
-                            Automatically play previews while browsing.
-                        </p>
+.setting-row p,
+.setting-select-row p {
 
-                    </div>
+    max-width: 420px;
 
-                    <label class="switch">
+    color: #818b91;
 
-                        <input
-                            type="checkbox"
-                            id="autoplayPreviews"
-                        >
+    font-size: 13px;
 
-                        <span class="slider"></span>
+    line-height: 1.5;
+}
 
-                    </label>
 
-                </div>
+/* SWITCH */
 
+.switch {
 
-                <div class="setting-select-row">
+    position: relative;
 
-                    <div>
+    width: 50px;
+    height: 28px;
 
-                        <h3>Playback Quality</h3>
+    flex-shrink: 0;
+}
 
-                        <p>
-                            Choose your preferred streaming quality.
-                        </p>
 
-                    </div>
+.switch input {
 
-                    <select id="playbackQuality">
+    opacity: 0;
 
-                        <option value="auto">
-                            Auto
-                        </option>
+    width: 0;
+    height: 0;
+}
 
-                        <option value="720p">
-                            720p
-                        </option>
 
-                        <option value="1080p">
-                            1080p
-                        </option>
+.slider {
 
-                        <option value="4k">
-                            4K
-                        </option>
+    position: absolute;
 
-                    </select>
+    inset: 0;
 
-                </div>
+    cursor: pointer;
 
-            </article>
+    border-radius: 50px;
 
+    background: #252b2e;
 
-            <!-- SUBTITLES -->
+    transition: 0.2s;
+}
 
-            <article class="settings-panel">
 
-                <div class="panel-header">
+.slider::before {
 
-                    <span class="panel-label">
-                        LANGUAGE
-                    </span>
+    content: "";
 
-                    <h2>Subtitles & Language</h2>
+    position: absolute;
 
-                </div>
+    width: 20px;
+    height: 20px;
 
+    left: 4px;
+    top: 4px;
 
-                <div class="setting-row">
+    border-radius: 50%;
 
-                    <div>
+    background: white;
 
-                        <h3>Subtitles by Default</h3>
+    transition: 0.2s;
+}
 
-                        <p>
-                            Automatically enable subtitles when available.
-                        </p>
 
-                    </div>
+.switch input:checked + .slider {
+    background: #27e5d4;
+}
 
-                    <label class="switch">
 
-                        <input
-                            type="checkbox"
-                            id="defaultSubtitles"
-                        >
+.switch input:checked + .slider::before {
+    transform: translateX(22px);
+}
 
-                        <span class="slider"></span>
 
-                    </label>
+/* SELECT */
 
-                </div>
+.setting-select-row select {
 
+    min-width: 125px;
 
-                <div class="setting-select-row">
+    height: 44px;
 
-                    <div>
+    padding: 0 13px;
 
-                        <h3>Preferred Language</h3>
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
 
-                        <p>
-                            Your preferred PlayMovies language.
-                        </p>
+    border-radius: 8px;
 
-                    </div>
+    background: #111619;
 
-                    <select id="preferredLanguage">
+    color: white;
 
-                        <option value="english">
-                            English
-                        </option>
+    font-weight: 700;
 
-                        <option value="spanish">
-                            Spanish
-                        </option>
+    outline: none;
 
-                        <option value="french">
-                            French
-                        </option>
+    cursor: pointer;
+}
 
-                    </select>
 
-                </div>
+.setting-select-row select:focus {
+    border-color: #27e5d4;
+}
 
-            </article>
 
+/* SAVE AREA */
 
-            <!-- ACCESSIBILITY -->
+.save-area {
 
-            <article class="settings-panel">
+    max-width: 1150px;
 
-                <div class="panel-header">
+    margin-top: 20px;
 
-                    <span class="panel-label">
-                        ACCESSIBILITY
-                    </span>
+    padding: 25px 28px;
 
-                    <h2>Accessibility</h2>
+    display: flex;
 
-                </div>
+    align-items: center;
 
+    justify-content: space-between;
 
-                <div class="setting-row">
+    gap: 25px;
 
-                    <div>
+    border:
+        1px solid
+        rgba(39,229,212,0.13);
 
-                        <h3>Reduced Motion</h3>
+    border-radius: 16px;
 
-                        <p>
-                            Reduce animations and motion effects.
-                        </p>
+    background:
+        rgba(39,229,212,0.025);
+}
 
-                    </div>
 
-                    <label class="switch">
+.save-area h3 {
+    margin-bottom: 6px;
+}
 
-                        <input
-                            type="checkbox"
-                            id="reducedMotion"
-                        >
 
-                        <span class="slider"></span>
+.save-area p {
+    color: #818b91;
+    font-size: 13px;
+}
 
-                    </label>
 
-                </div>
+#saveSettings {
 
-            </article>
+    min-width: 150px;
 
+    height: 47px;
 
-            <!-- NOTIFICATIONS -->
+    border: none;
 
-            <article class="settings-panel">
+    border-radius: 8px;
 
-                <div class="panel-header">
+    background: #27e5d4;
 
-                    <span class="panel-label">
-                        NOTIFICATIONS
-                    </span>
+    color: #04100f;
 
-                    <h2>Notifications</h2>
+    font-weight: 900;
 
-                </div>
+    cursor: pointer;
 
+    transition: 0.18s;
+}
 
-                <div class="setting-row">
 
-                    <div>
+#saveSettings:hover,
+#saveSettings:focus-visible {
 
-                        <h3>Email Notifications</h3>
+    transform: translateY(-2px);
 
-                        <p>
-                            Receive PlayMovies updates and account notifications.
-                        </p>
+    box-shadow:
+        0 8px 25px
+        rgba(39,229,212,0.18);
 
-                    </div>
+    outline: none;
+}
 
-                    <label class="switch">
 
-                        <input
-                            type="checkbox"
-                            id="emailNotifications"
-                        >
+/* SECURITY */
 
-                        <span class="slider"></span>
+.security-panel {
 
-                    </label>
+    max-width: 1150px;
 
-                </div>
+    margin-top: 20px;
 
-            </article>
+    padding: 28px;
 
-        </section>
+    display: flex;
 
+    align-items: center;
 
-        <section class="save-area">
+    justify-content: space-between;
 
-            <div>
+    gap: 25px;
 
-                <h3>Your Settings</h3>
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
 
-                <p id="saveStatus">
-                    Changes are saved on this device.
-                </p>
+    border-radius: 16px;
 
-            </div>
+    background:
+        rgba(255,255,255,0.028);
+}
 
-            <button id="saveSettings">
-                Save Settings
-            </button>
 
-        </section>
+.security-panel h2 {
 
+    margin-top: 7px;
+    margin-bottom: 7px;
 
-        <section class="security-panel">
+    font-size: 22px;
+}
 
-            <div>
 
-                <span class="panel-label">
-                    ACCOUNT
-                </span>
+.security-panel p {
 
-                <h2>Account & Security</h2>
+    color: #818b91;
 
-                <p>
-                    Manage your PlayMovies account and security.
-                </p>
+    font-size: 13px;
+}
 
-            </div>
 
-            <a
-                href="profile.html"
-                class="account-button"
-            >
-                Manage Account
-            </a>
+.account-button {
 
-        </section>
+    min-height: 46px;
 
-    </main>
+    padding: 0 20px;
 
+    display: inline-flex;
 
-    <script src="settings.js"></script>
+    align-items: center;
 
-</body>
-</html>
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    transition: 0.18s;
+}
+
+
+.account-button:hover,
+.account-button:focus-visible {
+
+    border-color: #27e5d4;
+
+    color: #27e5d4;
+
+    transform: translateY(-2px);
+
+    outline: none;
+}
+
+
+/* REDUCED MOTION */
+
+body.reduced-motion *,
+body.reduced-motion *::before,
+body.reduced-motion *::after {
+
+    scroll-behavior: auto !important;
+
+    transition-duration: 0.01ms !important;
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .settings-page {
+
+        margin-left: 68px;
+
+        padding:
+            45px
+            20px
+            70px;
+    }
+
+
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .save-area,
+    .security-panel {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    #saveSettings,
+    .account-button {
+        width: 100%;
+    }
+
+}
