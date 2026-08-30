@@ -143,7 +143,28 @@
             );
         }
 
+async function registerWorker() {
+    if (!("serviceWorker" in navigator)) {
+        return;
+    }
 
+    try {
+        await navigator.serviceWorker.register(
+            "./service-worker.js",
+            {
+                scope: "./"
+            }
+        );
+
+        await navigator.serviceWorker.ready;
+
+    } catch (error) {
+        alert(
+            "Service Worker registration failed:\n\n" +
+            error.message
+        );
+    }
+}
         async function runDiagnostics() {
 
             setStatus(
