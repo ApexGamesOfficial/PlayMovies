@@ -1,0 +1,626 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 70% -10%,
+            rgba(39,229,212,0.14),
+            transparent 28%
+        ),
+        #050708;
+
+    color: white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =============================
+   SIDEBAR
+============================= */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 86px;
+    height: 100vh;
+
+    background:
+        linear-gradient(
+            90deg,
+            #050708 0%,
+            rgba(5,7,8,0.98) 100%
+        );
+
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px 13px;
+
+    border-right:
+        1px solid rgba(255,255,255,0.04);
+
+    transition:
+        width 0.25s ease;
+}
+
+.sidebar:hover,
+.sidebar:focus-within {
+    width: 250px;
+}
+
+
+.sidebar-logo {
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    margin-bottom: 24px;
+}
+
+.sidebar-logo img {
+    width: 205px;
+    min-width: 205px;
+}
+
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.side-link {
+    width: 100%;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+
+    border: none;
+
+    background: transparent;
+
+    color: #a5adb3;
+
+    text-decoration: none;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    transition: 0.18s;
+}
+
+
+.side-link:hover,
+.side-link:focus-visible,
+.side-link.active {
+    background:
+        rgba(39,229,212,0.1);
+
+    color: white;
+
+    outline: none;
+}
+
+
+.side-link.active {
+    color: #27e5d4;
+}
+
+
+.side-icon {
+    width: 58px;
+    min-width: 58px;
+
+    text-align: center;
+
+    font-size: 23px;
+}
+
+
+.side-text {
+    font-size: 15px;
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.15s;
+}
+
+
+.sidebar:hover .side-text,
+.sidebar:focus-within .side-text {
+    opacity: 1;
+}
+
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+/* =============================
+   MAIN
+============================= */
+
+.main-content {
+    margin-left: 86px;
+
+    padding-bottom: 70px;
+}
+
+
+/* =============================
+   HERO
+============================= */
+
+.subscription-hero {
+    padding:
+        90px
+        7%
+        50px;
+
+    max-width: 1000px;
+}
+
+
+.eyebrow {
+    color: #27e5d4;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 16px;
+}
+
+
+.subscription-hero h1 {
+    font-size:
+        clamp(48px, 6vw, 78px);
+
+    letter-spacing: -3px;
+
+    line-height: 0.98;
+
+    margin-bottom: 22px;
+}
+
+
+.hero-description {
+    max-width: 650px;
+
+    color: #a7afb5;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+
+/* =============================
+   PLANS
+============================= */
+
+.plans-section {
+    padding:
+        20px
+        7%
+        55px;
+}
+
+
+.plans-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+    max-width: 1350px;
+}
+
+
+.plan-card {
+    position: relative;
+
+    min-height: 540px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 32px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.065),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.09);
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.plan-card:hover,
+.plan-card:focus-within {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(39,229,212,0.6);
+
+    box-shadow:
+        0 22px 50px
+        rgba(0,0,0,0.45);
+}
+
+
+.featured-plan {
+    border:
+        2px solid #27e5d4;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(39,229,212,0.1),
+            rgba(255,255,255,0.03)
+        );
+}
+
+
+.popular-badge {
+    position: absolute;
+
+    top: -15px;
+    right: 20px;
+
+    padding:
+        8px
+        13px;
+
+    border-radius: 999px;
+
+    background: #27e5d4;
+
+    color: #04100f;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.plan-label {
+    color: #27e5d4;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.plan-card h2 {
+    font-size: 29px;
+
+    margin:
+        13px
+        0
+        20px;
+}
+
+
+.price {
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 6px;
+}
+
+
+.price-main {
+    font-size: 46px;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+}
+
+
+.price-period {
+    color: #8d969c;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+}
+
+
+/* =============================
+   FEATURES
+============================= */
+
+.features {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 17px;
+
+    margin:
+        35px
+        0;
+
+    color: #c6cdd1;
+
+    font-size: 15px;
+
+    line-height: 1.4;
+}
+
+
+.features li::first-letter {
+    color: #27e5d4;
+}
+
+
+.features .limited {
+    color: #889096;
+}
+
+
+/* =============================
+   SELECT BUTTON
+============================= */
+
+.select-plan {
+    width: 100%;
+    height: 54px;
+
+    margin-top: auto;
+
+    border:
+        1px solid rgba(255,255,255,0.17);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.18s;
+}
+
+
+.main-plan {
+    background: #27e5d4;
+
+    color: #04100f;
+
+    border-color: #27e5d4;
+}
+
+
+.select-plan:hover,
+.select-plan:focus-visible {
+    transform: scale(1.025);
+
+    outline:
+        3px solid #27e5d4;
+
+    outline-offset: 4px;
+}
+
+
+/* =============================
+   NO SUBSCRIPTION
+============================= */
+
+.no-subscription {
+    margin:
+        20px
+        7%;
+
+    max-width: 1350px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 36px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid rgba(255,255,255,0.07);
+}
+
+
+.small-label {
+    color: #27e5d4;
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.no-subscription h2 {
+    font-size: 28px;
+
+    margin:
+        9px
+        0;
+}
+
+
+.no-subscription p {
+    color: #8f989e;
+
+    max-width: 700px;
+
+    line-height: 1.6;
+}
+
+
+.no-subscription a {
+    flex-shrink: 0;
+
+    padding:
+        15px
+        23px;
+
+    background:
+        rgba(255,255,255,0.1);
+
+    color: white;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 900;
+}
+
+
+.no-subscription a:hover,
+.no-subscription a:focus-visible {
+    outline:
+        3px solid #27e5d4;
+
+    outline-offset: 4px;
+}
+
+
+/* =============================
+   NOTE
+============================= */
+
+.prototype-note {
+    margin:
+        32px
+        7%
+        0;
+
+    color: #596268;
+
+    font-size: 12px;
+}
+
+
+/* =============================
+   RESPONSIVE
+============================= */
+
+@media (max-width: 1050px) {
+
+    .plans-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .plan-card {
+        min-height: auto;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 68px;
+    }
+
+    .sidebar:hover,
+    .sidebar:focus-within {
+        width: 215px;
+    }
+
+    .main-content {
+        margin-left: 68px;
+    }
+
+    .subscription-hero {
+        padding:
+            65px
+            30px
+            40px;
+    }
+
+    .plans-section {
+        padding:
+            10px
+            30px
+            45px;
+    }
+
+    .no-subscription {
+        margin:
+            10px
+            30px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
