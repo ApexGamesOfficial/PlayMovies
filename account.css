@@ -485,3 +485,110 @@ body {
     }
 
 }
+/* =============================
+   SIGN UP EXTRA FIELDS
+============================= */
+
+.form-row {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+}
+
+.account-form select {
+    width: 100%;
+    height: 52px;
+
+    padding: 0 15px;
+
+    border-radius: 8px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    background:
+        rgba(255,255,255,0.055);
+
+    color: white;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.18s;
+}
+
+.account-form select:focus {
+    border-color: #27e5d4;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(39,229,212,0.12);
+}
+
+.account-form select option {
+    background: #080c0d;
+    color: white;
+}
+
+.optional-text {
+    color: #697277;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    margin-left: 5px;
+}
+
+.terms-row {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: flex-start;
+
+    gap: 10px !important;
+
+    color: #969fa5 !important;
+
+    font-size: 12px !important;
+
+    font-weight: 600 !important;
+
+    line-height: 1.5;
+}
+
+.terms-row input {
+    width: 17px;
+    height: 17px;
+
+    min-width: 17px;
+
+    margin-top: 1px;
+
+    accent-color: #27e5d4;
+}
+
+.terms-row a {
+    color: #27e5d4;
+
+    text-decoration: none;
+
+    font-weight: 800;
+}
+
+.terms-row a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+}
