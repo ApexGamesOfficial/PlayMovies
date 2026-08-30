@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PlayMovies — Movies Anywhere, Everywhere</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            <img src="playmovies-logo.png" alt="PlayMovies">
+        </a>
+
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">TV Shows</a>
+            <a href="#">My List</a>
+        </nav>
+
+        <div class="nav-right">
+
+            <button class="search-button">
+                Search
+            </button>
+
+            <a href="#" class="sign-in">
+                Sign In
+            </a>
+
+            <a href="#" class="create-account">
+                Create Account
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- FEATURED MOVIE -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="featured-label">
+                    PLAYMOVIES FEATURED
+                </p>
+
+                <h1>Featured Movie</h1>
+
+                <p class="movie-info">
+                    PG-13 &nbsp; • &nbsp; 2026 &nbsp; • &nbsp; 2h 8m
+                </p>
+
+                <p class="movie-description">
+                    Your featured movies will appear here.
+                    Discover new stories, build your watchlist,
+                    and watch anywhere.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="watch-button">
+                        ▶ Watch Now
+                    </button>
+
+                    <button class="info-button">
+                        More Info
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRENDING -->
+
+        <section class="movie-section">
+
+            <h2>Trending Now</h2>
+
+            <div class="movie-row">
+
+                <button class="movie-card">
+                    <span>MOVIE 1</span>
+                </button>
+
+                <button class="movie-card">
+                    <span>MOVIE 2</span>
+                </button>
+
+                <button class="movie-card">
+                    <span>MOVIE 3</span>
+                </button>
+
+                <button class="movie-card">
+                    <span>MOVIE 4</span>
+                </button>
+
+                <button class="movie-card">
+                    <span>MOVIE 5</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- NEW RELEASES -->
+
+        <section class="movie-section">
+
+            <h2>New Releases</h2>
+
+            <div class="movie-row">
+
+                <button class="movie-card">
+                    <span>MOVIE 6</span>
+                </button>
+
+                <button class="movie-card">
+                    <span>MOVIE 7</span>
+                </button>
+
+                <button class="movie-card">
+                    <span>MOVIE 8</span>
+                </button>
+
+                <button class="movie-card">
+                    <span>MOVIE 9</span>
+                </button>
+
+                <button class="movie-card">
+                    <span>MOVIE 10</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- MY LIST -->
+
+        <section class="movie-section">
+
+            <h2>My List</h2>
+
+            <div class="empty-list">
+
+                <h3>Your list is waiting.</h3>
+
+                <p>
+                    Add movies and shows you want to watch later.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
