@@ -29,6 +29,7 @@
 
             <div class="account-heading">
                 <h1>Create your account</h1>
+
                 <p>
                     Start watching with PlayMovies.
                 </p>
@@ -36,13 +37,42 @@
 
             <form class="account-form" id="signupForm">
 
+                <div class="form-row">
+
+                    <label>
+                        First Name
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            placeholder="First name"
+                            autocomplete="given-name"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Last Name
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            placeholder="Last name"
+                            autocomplete="family-name"
+                            required
+                        >
+                    </label>
+
+                </div>
+
                 <label>
                     Display Name
 
                     <input
                         type="text"
                         id="displayName"
-                        placeholder="Your name"
+                        placeholder="What should we call you?"
+                        autocomplete="nickname"
                         required
                     >
                 </label>
@@ -54,9 +84,38 @@
                         type="email"
                         id="signupEmail"
                         placeholder="you@example.com"
+                        autocomplete="email"
                         required
                     >
                 </label>
+
+                <div class="form-row">
+
+                    <label>
+                        Date of Birth
+
+                        <input
+                            type="date"
+                            id="dateOfBirth"
+                            autocomplete="bday"
+                            required
+                        >
+                    </label>
+
+                    <label>
+                        Gender
+                        <span class="optional-text">Optional</span>
+
+                        <select id="gender">
+                            <option value="">Prefer not to say</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="nonbinary">Non-binary</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
+
+                </div>
 
                 <label>
                     Password
@@ -68,6 +127,7 @@
                             id="signupPassword"
                             placeholder="Create a password"
                             minlength="8"
+                            autocomplete="new-password"
                             required
                         >
 
@@ -92,6 +152,7 @@
                             id="confirmPassword"
                             placeholder="Enter password again"
                             minlength="8"
+                            autocomplete="new-password"
                             required
                         >
 
@@ -106,7 +167,27 @@
                     </div>
                 </label>
 
-                <p class="form-message" id="signupMessage"></p>
+                <label class="terms-row">
+
+                    <input
+                        type="checkbox"
+                        id="termsAgreement"
+                        required
+                    >
+
+                    <span>
+                        I agree to the
+                        <a href="terms.html">Terms of Service</a>
+                        and
+                        <a href="privacy.html">Privacy Policy</a>.
+                    </span>
+
+                </label>
+
+                <p
+                    class="form-message"
+                    id="signupMessage"
+                ></p>
 
                 <button
                     type="submit"
