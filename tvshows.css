@@ -146,23 +146,10 @@ body {
 /* Text-only sidebar buttons */
 
 .side-link.text-only {
-    padding-left: 18px;
+    padding-left: 58px;
 }
 
 .side-link.text-only .side-text {
-    margin-left: 58px;
-
-    transition:
-        opacity 0.15s,
-        margin-left 0.25s;
-}
-
-.sidebar:hover
-.side-link.text-only
-.side-text,
-.sidebar:focus-within
-.side-link.text-only
-.side-text {
     margin-left: 0;
 }
 
