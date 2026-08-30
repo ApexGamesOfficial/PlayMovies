@@ -2,69 +2,61 @@ const screensaver =
     document.getElementById("playmoviesScreensaver");
 
 const slides =
-    document.querySelectorAll(".screensaver-slide");
+    Array.from(
+        document.querySelectorAll(".screensaver-slide")
+    );
 
-let inactivityTimer;
-let slideTimer;
+let inactivityTimer = null;
+let slideTimer = null;
 
 let currentSlide = 0;
 let screensaverActive = false;
 
 
-// ========================================
-// TEST SETTINGS
-// ========================================
-
-// Screensaver starts after 5 seconds for testing
+// TEST:
+// Start after 5 seconds
 const SCREENSAVER_DELAY = 5000;
 
-// Switch movie every 6 seconds
-const SLIDE_DURATION = 6000;
+// Change movie every 4 seconds
+const SLIDE_DURATION = 4000;
 
-
-// ========================================
-// SHOW A SLIDE
-// ========================================
 
 function showSlide(index) {
 
     slides.forEach((slide, i) => {
 
-        if (i === index) {
-            slide.classList.add("active");
-        } else {
-            slide.classList.remove("active");
-        }
+        slide.classList.toggle(
+            "active",
+            i === index
+        );
 
     });
 
 }
 
 
-// ========================================
-// NEXT MOVIE
-// ========================================
-
 function nextSlide() {
 
-    currentSlide++;
-
-    if (currentSlide >= slides.length) {
-        currentSlide = 0;
+    if (slides.length < 2) {
+        return;
     }
+
+    currentSlide =
+        (currentSlide + 1)
+        % slides.length;
 
     showSlide(currentSlide);
 
 }
 
 
-// ========================================
-// START SCREENSAVER
-// ========================================
-
 function startScreensaver() {
 
-    if (!screensaver || slides.length === 0) {
+    if (!screensaver) {
+        return;
+    }
+
+    if (slides.length === 0) {
         return;
     }
 
@@ -88,10 +80,6 @@ function startScreensaver() {
 }
 
 
-// ========================================
-// STOP SCREENSAVER
-// ========================================
-
 function stopScreensaver() {
 
     if (!screensaverActive) {
@@ -106,10 +94,6 @@ function stopScreensaver() {
 
 }
 
-
-// ========================================
-// RESET AFK TIMER
-// ========================================
 
 function resetTimer() {
 
@@ -128,10 +112,6 @@ function resetTimer() {
 }
 
 
-// ========================================
-// ACTIVITY
-// ========================================
-
 [
     "mousemove",
     "mousedown",
@@ -148,10 +128,13 @@ function resetTimer() {
 });
 
 
-// ========================================
-// START TIMER
-// ========================================
-
 window.addEventListener("load", () => {
+
+    console.log(
+        "Screensaver slides found:",
+        slides.length
+    );
+
     resetTimer();
+
 });
