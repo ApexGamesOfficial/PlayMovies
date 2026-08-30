@@ -1,2 +1,2 @@
 # PlayMovies
-PlayMovies is a streaming service on any mobile device, desktop, web, and TV's! Play Movies - Movies Anywhere, Everywhere
+PlayMovies is a streaming service for mobile devices, desktops, web, and TVs. PlayMovies — Movies Anywhere, Everywhere.
