@@ -1,1 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    min-height: 100vh;
+
+    background: #050708;
+
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.welcome {
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =============================
+   BACKGROUND POSTERS
+============================= */
+
+.poster-background {
+    position: absolute;
+
+    width: 130%;
+    height: 130%;
+
+    left: -15%;
+    top: -15%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    grid-auto-rows: 290px;
+
+    gap: 14px;
+
+    transform: rotate(-7deg) scale(1.08);
+}
+
+.poster {
+    display: flex;
+    align-items: flex-end;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    color: rgba(255,255,255,0.8);
+}
+
+.p1 {
+    background:
+        radial-gradient(circle at 70% 20%, #28e8d7, transparent 25%),
+        #102e30;
+}
+
+.p2 {
+    background:
+        radial-gradient(circle at 30% 20%, #5e81ff, transparent 25%),
+        #111935;
+}
+
+.p3 {
+    background:
+        radial-gradient(circle at 65% 20%, #ffe66c, transparent 22%),
+        #2f2910;
+}
+
+.p4 {
+    background:
+        radial-gradient(circle at 35% 25%, #ff4141, transparent 24%),
+        #381010;
+}
+
+.p5 {
+    background:
+        linear-gradient(
+            120deg,
+            transparent 40%,
+            #ff3030 42%,
+            transparent 45%
+        ),
+        #351111;
+}
+
+.p6 {
+    background:
+        radial-gradient(circle at 75% 25%, #c855ff, transparent 25%),
+        #2d1238;
+}
+
+.p7 {
+    background:
+        radial-gradient(circle at 70% 25%, #2dd7b4, transparent 23%),
+        #10362f;
+}
+
+.p8 {
+    background:
+        radial-gradient(circle at 72% 25%, #e45f40, transparent 24%),
+        #3a1812;
+}
+
+.p9 {
+    background:
+        radial-gradient(circle at 65% 25%, #54d4ff, transparent 24%),
+        #11354b;
+}
+
+.p10 {
+    background:
+        radial-gradient(circle at 72% 25%, #6595ff, transparent 24%),
+        #121d38;
+}
+
+
+/* =============================
+   DARK OVERLAY
+============================= */
+
+.welcome-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.85) 65%,
+            #050708 100%
+        );
+
+    backdrop-filter: blur(2px);
+}
+
+
+/* =============================
+   WELCOME CONTENT
+============================= */
+
+.welcome-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(760px, 88%);
+
+    text-align: center;
+
+    padding: 55px;
+
+    background:
+        rgba(4, 7, 8, 0.82);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.55);
+}
+
+.welcome-logo {
+    width: 280px;
+
+    max-width: 80%;
+
+    margin-bottom: 35px;
+}
+
+.welcome-content h1 {
+    font-size:
+        clamp(40px, 5vw, 66px);
+
+    line-height: 1.02;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 22px;
+}
+
+.welcome-description {
+    color: #b2bac0;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    max-width: 600px;
+
+    margin:
+        0 auto
+        32px;
+}
+
+
+/* =============================
+   BUTTONS
+============================= */
+
+.welcome-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-bottom: 24px;
+}
+
+.welcome-actions a {
+    min-width: 190px;
+
+    padding: 17px 26px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    transition: 0.18s;
+}
+
+.create-button {
+    background: #27e5d4;
+
+    color: #04100f;
+}
+
+.login-button {
+    background:
+        rgba(255,255,255,0.12);
+
+    color: white;
+
+    border:
+        1px solid rgba(255,255,255,0.13);
+}
+
+.welcome-actions a:hover,
+.welcome-actions a:focus-visible {
+    transform: scale(1.05);
+
+    outline:
+        3px solid #27e5d4;
+
+    outline-offset: 4px;
+}
+
+.welcome-small {
+    color: #7d858b;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =============================
+   MOBILE
+============================= */
+
+@media (max-width: 650px) {
+
+    .poster-background {
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        grid-auto-rows: 220px;
+    }
+
+    .welcome-content {
+        padding:
+            38px 24px;
+    }
+
+    .welcome-content h1 {
+        font-size: 42px;
+    }
+
+    .welcome-actions {
+        flex-direction: column;
+    }
+
+    .welcome-actions a {
+        width: 100%;
+    }
+
+}
